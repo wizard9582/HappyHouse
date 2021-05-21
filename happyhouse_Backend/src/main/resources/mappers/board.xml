@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<<<<<<< HEAD
 <mapper namespace="com.ssafy.happyhouse.model.repo.BoardRepo">
 	<!-- Book 정보를 저장한다. -->
 	<insert id="insert" parameterType="Board">
@@ -10,10 +11,20 @@
 	</insert>
 
 	<!-- Book 정보를 삭제한다. -->
+=======
+<mapper namespace="com.happyhouse.backend.model.repo.BoardRepo">
+
+	<insert id="insert" parameterType="Board">
+		<![CDATA[]]>
+		insert into board values(#{apt}, #{author}, #{date}, #{title}, #{content})
+	</insert>
+
+>>>>>>> 58ac6d4c839690600fd608639ddb4628900ad3ef
 	<delete id="delete" parameterType="string">
 		delete from board where no=#{no}
 	</delete>
 
+<<<<<<< HEAD
 	<!-- Book 정보를 수정한다. -->
 	<update id="update" parameterType="Board">
 		update board
@@ -28,6 +39,57 @@
 
 	<!-- Book정보를 모두 조회한다 -->
 	<select id="selectAll" resultType="Board">
+=======
+	<update id="update" parameterType="Board">
+		update board
+		set date=#{date}, title=#{title}, content = #{content}
+		where no=#{no}
+	</update>
+
+	<!-- 조인문  -->
+	
+	<resultMap type="Star" id="Star">
+		<result column="no" property="no"/>
+		<result column="als" property="als"/>
+		<result column="sft" property="sft"/>
+		<result column="trf" property="trf"/>
+		<result column="env" property="env"/>
+		<result column="cvn" property="cvn"/>
+		<result column="mng" property="mng"/>
+	</resultMap>
+	
+	<resultMap type="Board" id="Board">
+		<result column="no" property="no"/>
+		<result column="apt" property="apt"/>
+		<result column="author" property="author"/>
+		<result column="date" property="date"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+	</resultMap>
+	
+	<resultMap type="StarBoard" id="StarBoard">
+		<collection property="board" resultMap="Board"/>
+		<collection property="star" resultMap="Star"/>
+	</resultMap>
+	
+	<select id="select" parameterType="string" resultMap="StarBoard">
+		select b.no, b.apt, b.author, b.date, b.title, b.content, s.als, s.sft, s.trf, s.env, s.cvn, s.mng
+		from board as b
+		join star as s
+		on b.no = s.no
+		where apt=#{apt}
+	</select>
+
+	<!-- 백업 
+		<select id="select" parameterType="string" resultType="Board">
+		select *
+		from board
+		where apt=#{apt}
+	</select>
+	 -->
+	
+	<select id="selectAll" parameterType="string" resultType="Board">
+>>>>>>> 58ac6d4c839690600fd608639ddb4628900ad3ef
 		select * from board
 	</select>
 </mapper>

@@ -11,7 +11,10 @@ public class User {
 	public User() {
 		super();
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58ac6d4c839690600fd608639ddb4628900ad3ef
 	public User(String id, String name, String pass, String nick, String address, String phone) {
 		super();
 		this.id = id;
