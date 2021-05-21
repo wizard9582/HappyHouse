@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.happyhouse.model.repo.BoardRepo">
+	<!-- Book 정보를 저장한다. -->
+	<insert id="insert" parameterType="Board">
+		<![CDATA[]]>
+		insert into board values(#{no}, #{title},#{content})
+	</insert>
+
+	<!-- Book 정보를 삭제한다. -->
+	<delete id="delete" parameterType="string">
+		delete from board where no=#{no}
+	</delete>
+
+	<!-- Book 정보를 수정한다. -->
+	<update id="update" parameterType="Board">
+		update board
+		set no=#{no}, title=#{title}, content = #{content}
+		where no=#{no}
+	</update>
+
+	<!-- Book 정보를 조회한다. -->
+	<select id="select" parameterType="string" resultType="Board">
+		select * from board where no=#{no}
+	</select>
+
+	<!-- Book정보를 모두 조회한다 -->
+	<select id="selectAll" resultType="Board">
+		select * from board
+	</select>
+</mapper>
