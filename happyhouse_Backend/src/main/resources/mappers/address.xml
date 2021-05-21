@@ -3,11 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- name space: 쿼리를 구별하기 위한 키워드 -->
-<<<<<<< HEAD
 <mapper namespace="com.ssafy.happyhouse.model.repo.AddressRepo">
-=======
-<mapper namespace="com.happyhouse.backend.model.repo.AddressRepo">
->>>>>>> 58ac6d4c839690600fd608639ddb4628900ad3ef
 	<select id="getInfoGugun" parameterType="string" resultType="String">
 		select distinct(gugun) 
 		from baseaddress where 
