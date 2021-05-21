@@ -7,13 +7,15 @@ public class Board {
     private String apt;
     private String author;
     private Date date;
+    private String title;
     private String content;
     
 	public Board() {
 		super();
 	}
-	public Board(String no, String apt, String author, Date date, String content) {
+	public Board(String no, String apt, String author, Date date, String title, String content) {
 		super();
+		this.title = title;
 		this.no = no;
 		this.apt = apt;
 		this.author = author;
@@ -51,6 +53,12 @@ public class Board {
 		this.content = content;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	@Override
 	public String toString() {
 		return "Board [no=" + no + ", apt=" + apt + ", author=" + author + ", date=" + date + ", content=" + content

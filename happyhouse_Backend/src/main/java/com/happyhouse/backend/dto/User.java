@@ -11,7 +11,6 @@ public class User {
 	public User() {
 		super();
 	}
-
 	public User(String id, String name, String pass, String nick, String address, String phone) {
 		super();
 		this.id = id;

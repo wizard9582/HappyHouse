@@ -3,10 +3,13 @@ package com.happyhouse.backend.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.happyhouse.backend.dto.Board;
+import com.happyhouse.backend.dto.StarBoard;
 import com.happyhouse.backend.model.repo.BoardRepo;
 
+@Service
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
@@ -31,15 +34,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Board select(String no) {
+	public List<StarBoard> select(String apt) {
 		// TODO Auto-generated method stub
-		return repo.select(no);
+		return repo.select(apt);
 	}
 
 	@Override
 	public List<Board> selectAll() {
 		// TODO Auto-generated method stub
-		return repo.selecAll();
+		return repo.selectAll();
 	}
 
 	

@@ -17,7 +17,7 @@ import com.happyhouse.backend.model.service.HouseService;
 import com.happyhouse.backend.model.service.UserService;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/house")
 @CrossOrigin("*")
 public class HouseRestController {
 	@Autowired
