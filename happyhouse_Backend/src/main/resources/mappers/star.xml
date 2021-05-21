@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- name space: 쿼리를 구별하기 위한 키워드 -->
+<mapper namespace="com.happyhouse.backend.model.repo.StarRepo">
+
+	<insert id="insertStar" parameterType="Star">
+		insert into star (no, als, sft, trf, env, cvn, mng) 
+		values (#{no},#{als}, #{sft}, #{trf}, #{env}, #{cvn}, #{mng})
+	</insert>
+	<delete id="deleteStar" parameterType="string">
+		delete 
+		from star 
+		where no = #{no}
+	</delete>
+	<select id="getStar" parameterType="string" resultType="Star">
+		select * 
+		from star 
+		where no=#{no}
+	</select>
+	<update id="changeStar" parameterType="Star">
+		update star 
+		set als=#{als},sft=#{sft},trf=#{trf},env=#{env},cvn=#{cvn},mng=#{mng},
+		where no=#{no}
+	</update>
+</mapper>
