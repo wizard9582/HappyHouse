@@ -83,7 +83,7 @@ const routes = [
 		component: noticeModify,
 	},
 	{
-		path: "/mypage/list",
+		path: "/notice/list",
 		component: noticeList,
 	},
 	/////////////notice//////////////////
