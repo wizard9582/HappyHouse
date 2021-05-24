@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HappyHouse from "../components/happyhouse/happyhouse.vue";
@@ -43,7 +44,6 @@ const routes = [
 		path: "/board/modify",
 		component: boardModify,
 	},
-	//////////////////board //////////////////
 	{
 		path: "/map/map",
 		component: map,
@@ -56,7 +56,6 @@ const routes = [
 		path: "/map/detail",
 		component: mapDetail,
 	},
-	/////////////////map//////////////////
 	{
 		path: "/mypage/mypage",
 		component: mypage,
@@ -69,7 +68,6 @@ const routes = [
 		path: "/mypage/modify",
 		component: mypageModify,
 	},
-	///////////////mypage////////////////////
 	{
 		path: "/notice/create",
 		component: noticeCreate,
@@ -86,7 +84,6 @@ const routes = [
 		path: "/notice/list",
 		component: noticeList,
 	},
-	/////////////notice//////////////////
 ];
 
 const router = new VueRouter({
@@ -94,5 +91,4 @@ const router = new VueRouter({
 	base: process.env.BASE_URL,
 	routes,
 });
-
 export default router;

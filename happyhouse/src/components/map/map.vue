@@ -69,11 +69,11 @@ export default {
 
         const container = document.querySelector('#kakaomap')
         const options = {
-        center: new kakao.maps.LatLng(37.5666805, 126.9784147),
+        center: new kakao.maps.LatLng(37.498004414546934, 127.02770621963765),
         level: 3
         }
         const map = new kakao.maps.Map(container, options)
-        const markerPosition = new kakao.maps.LatLng(37.5666805, 126.9784147);
+        const markerPosition = new kakao.maps.LatLng(37.498004414546934, 127.02770621963765);
         
         const mapTypeControl = new kakao.maps.MapTypeControl();
         map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPLEFT);
@@ -101,7 +101,8 @@ export default {
 		});
 
         marker.setMap(map)
-        }
+        
+        },
     }
 }
 </script>
