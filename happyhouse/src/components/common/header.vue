@@ -59,7 +59,7 @@
 					<li class="nav-item">
 						<router-link to="/favorite" class="nav-link text-white">즐겨찾기</router-link></li>
 					<li class="nav-item mr-5">
-						<button class="btn btn-primary" type="button" @click="login">로그인</button></li>
+						<button class="btn btn-primary" type="button" @click="$emit('tryLogin')">로그인</button></li>
 				</ul>
 			</div>
 		</div>
@@ -77,6 +77,5 @@ li {
 </style>
 <script>
 export default {
-	
 };
 </script>

@@ -22,8 +22,8 @@
 
                 <div class="modal-footer">
                     <slot name="footer">
-                        <button class="btn primary-btn" @click="validationCheck">회원가입</button>
-                        <button class="btn danger-btn" @click="$emit('close')">취소</button>
+                        <button class="btn btn-primary" @click="validationCheck">회원가입</button>
+                        <button class="btn btn-danger" @click="$emit('close')">취소</button>
                     </slot>
                 </div>
             </div>

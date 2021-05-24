@@ -2,13 +2,13 @@
 
 <template>
 	<div id="app">
-		<header-comp @tryLogin="openLogin" @tryRegist="openRegist"></header-comp>
+		<header-comp @tryLogin="openLogin"></header-comp>
 
 		<router-view />
 
 		<footer-comp></footer-comp>
-		<login-modal v-if="showLoginModal" @tryLogin="Login" ></login-modal>
-		<regist-modal v-if="showRegistModal" @tryRegist="Regist"></regist-modal>
+		<login-modal v-if="showLoginModal" @tryLogin="Login" @tryRegist="openRegist" @close="closeLogin"></login-modal>
+		<regist-modal v-if="showRegistModal" @tryRegist="Regist" @close="closeRegist"></regist-modal>
 	</div>
 </template>
 <style>
@@ -82,11 +82,13 @@ import FooterComp from "@/components/common/footer.vue";
 import HeaderComp from "@/components/common/header.vue";
 import LoginModal from "@/components/common/loginmodal.vue";
 import RegistModal from "@/components/common/registmodal.vue";
+import rest from "@/js/httpCommon.js"
 export default {
 	data(){
 		return{
 			showLoginModal : false,
 			showRegistModal : false,
+			token : ""
 		}
 	},
 	components: {
@@ -97,10 +99,31 @@ export default {
 	},
 	methods:{
 		Login(user){
+			//console.log(user);
+
+			rest.axios({
+                    url:"/user/login",
+                    method: "post",
+                    data: user, //
+                })
+                    .then((res) => {
+						//console.log(res);
+                        if (res.data.status == true) {
+							this.token = res.data.token;
+							//console.log(this.token);
+                            alert("로그인 성공");
+							this.closeLogin();
+                        } else {
+                            alert("로그인 실패");
+                        }
+                    })
+                    .catch(() => {
+                        alert("로그인 실패");
+                    });
 
 		},
 		Regist(user){
-
+			console.log(user);
 		},
 		openLogin(){
 			this.showLoginModal  = true;
@@ -110,6 +133,12 @@ export default {
 			this.showLoginModal  = false;
 			this.showRegistModal = true;
 		},
+		closeLogin(){
+			this.showLoginModal  = false;
+		},
+		closeRegist(){
+			this.showRegistModal = false;
+		}
 	}
 };
 </script>
