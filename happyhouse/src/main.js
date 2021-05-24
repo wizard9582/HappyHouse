@@ -7,7 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import Chartkick from 'chartkick'
 import VueChartkick from 'vue-chartkick'
+import VModal from 'vue-js-modal'
 
+Vue.use(VModal, { dynamic: true })
 Vue.use(VueChartkick, { Chartkick })
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
