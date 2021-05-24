@@ -2,52 +2,114 @@
 
 <template>
 	<div id="app">
-		<header-comp></header-comp>
+		<header-comp @tryLogin="openLogin" @tryRegist="openRegist"></header-comp>
 
 		<router-view />
 
 		<footer-comp></footer-comp>
-
-		<modal name="demo-login" transition="pop-out" width="30%" :focus-trap="true" :height="400">
-			<div class="input-group col-md-3">
-				<form action="action_page.php" method="post">
-					<div class="container">
-						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" required />
-
-						<label for="psw"><b>Password</b></label>
-						<input type="password" placeholder="Enter Password" name="psw" required />
-
-						<button type="submit">Login</button>
-						<label> <input type="checkbox" checked="checked" name="remember" /> Remember me </label>
-					</div>
-
-					<div class="container" style="background-color: #f1f1f1">
-						<button type="button" class="cancelbtn">Cancel</button>
-						<span class="psw">Forgot <a href="#">password?</a></span>
-					</div>
-				</form>
-			</div>
-		</modal>
+		<login-modal v-if="showLoginModal" @tryLogin="Login" ></login-modal>
+		<regist-modal v-if="showRegistModal" @tryRegist="Regist"></regist-modal>
 	</div>
 </template>
+<style>
+.modal-mask {
+	position: fixed;
+	z-index: 9998;	
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	display: table;
+	transition: opacity .3s ease;
+}
 
-<style></style>
+.modal-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.modal-container {
+	width: 300px;
+	margin: 0px auto;
+	padding: 20px 30px;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+	transition: all .3s ease;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+	margin-top: 0;
+	color: #42b983;
+}
+
+.modal-body {
+	margin: 20px 0;
+}
+
+.modal-default-button {
+	float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+	opacity: 0;
+}
+
+.modal-leave-active {
+	opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+</style>
+
 <script>
 import FooterComp from "@/components/common/footer.vue";
 import HeaderComp from "@/components/common/header.vue";
+import LoginModal from "@/components/common/loginmodal.vue";
+import RegistModal from "@/components/common/registmodal.vue";
 export default {
+	data(){
+		return{
+			showLoginModal : false,
+			showRegistModal : false,
+		}
+	},
 	components: {
 		FooterComp,
 		HeaderComp,
-	},
-	mounted() {
-		this.$modal.hide('demo-login')
+		LoginModal,
+		RegistModal
 	},
 	methods:{
-		showLogin(){
-			this.$modal.show('demo-login')
-		}
+		Login(user){
+
+		},
+		Regist(user){
+
+		},
+		openLogin(){
+			this.showLoginModal  = true;
+			this.showRegistModal = false;
+		},
+		openRegist(){
+			this.showLoginModal  = false;
+			this.showRegistModal = true;
+		},
 	}
 };
 </script>

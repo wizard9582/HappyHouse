@@ -13,11 +13,11 @@
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" placeholder="시 / 구(군) / 동" aria-label="Recipient's username" aria-describedby="button-addon2">
 					<div class="input-group-append">
-						<button class="btn btn-success" type="button">검색</button>
+						<button class="btn btn-success" type="button" @click="sentenceSearch">검색</button>
 					</div>
 				</div>
 				<div class="input-group mb-3">
-						<select class="form-control nav-item" id="city" name="city">
+						<select class="form-control nav-item" id="city" @select="selectCity">
 							<option value="all" selected>시/도/광역시</option>
 							<option value="서울특별시">서울특별시</option>
 							<option value="경기도">경기도</option>
@@ -36,14 +36,14 @@
 							<option value="전라남도">전라남도</option>
 							<option value="제주특별자치도">제주도</option>
 						</select> 
-						<select class="form-control nav-item" id="gugun" name="gugun">
+						<select class="form-control nav-item" id="gugun" @select="selectGugun">
 							<option value="all" selected>시를 선택해주세요</option>
 						</select>
-						<select class="form-control nav-item" id="dong" name="dong">
+						<select class="form-control nav-item" id="dong">
 							<option value="all" selected>구를 선택해주세요</option>
 						</select>
 					<div class="input-group-append">
-						<button class="btn btn-success" type="button">검색</button>
+						<button class="btn btn-success" type="button" @click="formSearch">검색</button>
 					</div>
 				</div>
 				<br/><br/><br/><br/><br/>
@@ -53,13 +53,13 @@
 					<li class="nav-item">
 						<router-link to="/notice" class="nav-link text-white">공지사항</router-link></li>
 					<li class="nav-item">
-						<router-link to="/" class="nav-link text-white">게시판</router-link></li>
+						<router-link to="/board" class="nav-link text-white">게시판</router-link></li>
 					<li class="nav-item">
 						<router-link to="/map/map" class="nav-link text-white">지도</router-link></li>
 					<li class="nav-item">
-						<router-link to="/" class="nav-link text-white">즐겨찾기</router-link></li>
+						<router-link to="/favorite" class="nav-link text-white">즐겨찾기</router-link></li>
 					<li class="nav-item mr-5">
-						<button class="btn btn-primary" type="button">로그인</button></li>
+						<button class="btn btn-primary" type="button" @click="login">로그인</button></li>
 				</ul>
 			</div>
 		</div>
@@ -69,17 +69,14 @@
 <style scoped>
 ul {
 	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 li {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-	border: 0;
 	float: left;
 }
 </style>
 <script>
-export default {};
+export default {
+	
+};
 </script>

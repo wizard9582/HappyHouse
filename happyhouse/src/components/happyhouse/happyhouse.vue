@@ -79,7 +79,7 @@ export default {
     methods: {
     initMap () {
 
-        var iwContent = '<div style="padding:5px;">Hello World!</div>';
+        var iwContent = '<div style="padding:5px;">Hello SSAFY!</div>';
         var infowindow = new kakao.maps.InfoWindow({
             content : iwContent
         });
