@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <div id = "map">
         <router-link to="/map/detail">html 확인용 임시링크</router-link>

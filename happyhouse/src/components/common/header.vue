@@ -18,13 +18,6 @@
 							<li><router-link to="/">더미</router-link></li>
 						</ul>
 					</div>
-
-					<div id="login">
-						<ModalView v-if="isModalViewed" @close-modal="isModalViewed = false">
-							<Content msg="Hello Vue in CodeSandbox!" />
-						</ModalView>
-						<button @click="isModalViewed = true">로그인</button>
-					</div>
 				</div>
 			</div>
 			<hr />
@@ -118,16 +111,9 @@ span.psw {
 }
 </style>
 <script>
-import ModalView from "./ModalView.vue";
-
 export default {
-	name: "login",
-	components: {
-		ModalView,
-	},
 	data() {
 		return {
-			isModalViewed: false,
 		};
 	},
 };
