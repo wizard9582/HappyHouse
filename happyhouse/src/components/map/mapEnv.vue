@@ -1,5 +1,5 @@
 <template>
-    <div id = "mapCompare">
+    <div id = "mapEnv">
 
     </div>
 </template>

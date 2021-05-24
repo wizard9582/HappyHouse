@@ -13,7 +13,7 @@
 						<ul class="menu">
 							<li><router-link to="/notice">공지사항</router-link></li>
 							<li><router-link to="/">게시판</router-link></li>
-							<li><router-link to="/">지도</router-link></li>
+							<li><router-link to="/map/map">지도</router-link></li>
 							<li><router-link to="/">더미</router-link></li>
 							<li><router-link to="/">더미</router-link></li>
 						</ul>
