@@ -1,6 +1,6 @@
 <template>
-    <div id = "mapDetail" class="container">
-        <div class="row">
+    <div id = "mapDetail" class="container card">
+        <div class="row card-body">
             <div class="col-4">
                 <img :src="require('@/assets/ssafy.png')" alt="houseImg"/>
                 <h3>{{houseInfo.houseName}}</h3>
