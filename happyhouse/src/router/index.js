@@ -33,7 +33,7 @@ const routes = [
 		component: boardCreate,
 	},
 	{
-		path: "/board/detail",
+		path: "/board/detail/:no",
 		component: boardDetail,
 	},
 	{
@@ -41,7 +41,7 @@ const routes = [
 		component: boardList,
 	},
 	{
-		path: "/board/modify",
+		path: "/board/modify/:no",
 		component: boardModify,
 	},
 	{

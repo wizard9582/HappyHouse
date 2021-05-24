@@ -5,7 +5,13 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive project-list">
-							<b-table hover :items="boards" clickable @row-clicked="rowClicked" :filter="keyword"></b-table>
+							<b-table
+								hover
+								:items="boards"
+								clickable
+								@row-clicked="rowClicked"
+								:filter="keyword"
+							></b-table>
 						</div>
 						<!-- end project-list -->
 
@@ -41,9 +47,10 @@ export default {
 		};
 	},
 	created() {
-		rest.axios({
+		rest
+			.axios({
 				method: "get",
-				url: "/board/search/"
+				url: "/board/search/",
 			})
 			.then((res) => {
 				console.log(res);
@@ -54,6 +61,15 @@ export default {
 				alert("목록 조회 실패");
 				console.log(err);
 			});
+	},
+	methods: {
+		rowClicked(items) {
+			//console.log(items);
+			this.$router.push({
+				path: "/board/detail/" + items.no,
+			});
+			//console.log(noClicked);
+		},
 	},
 };
 </script>
