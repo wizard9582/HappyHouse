@@ -11,7 +11,7 @@
 								<div class="features-icons-icon d-flex">
 									<i class="bi-window m-auto text-primary"></i>
 								</div>
-								<h3>자유게시판</h3>
+								<router-link to="/board/list"><h3>자유게시판</h3></router-link>
 								<p class="lead mb-0">어쩌고 어쩌고어쩌고 어쩌고어쩌고 어쩌고어쩌고 어쩌고</p>
 							</div>
 						</div>
@@ -20,7 +20,7 @@
 								<div class="features-icons-icon d-flex">
 									<i class="bi-layers m-auto text-primary"></i>
 								</div>
-								<h3>지도</h3>
+								<router-link to="/board/list"><h3>지도</h3></router-link>
 								<p class="lead mb-0">
 									어쩌고저쩌고오오어쩌고저쩌고오오어쩌고저쩌고오오어쩌고저쩌고오오
 								</p>
@@ -31,7 +31,7 @@
 								<div class="features-icons-icon d-flex">
 									<i class="bi-terminal m-auto text-primary"></i>
 								</div>
-								<h3>리뷰</h3>
+								<router-link to="/"><h3>리뷰</h3></router-link>
 								<p class="lead mb-0">★★★★☆</p>
 							</div>
 						</div>
