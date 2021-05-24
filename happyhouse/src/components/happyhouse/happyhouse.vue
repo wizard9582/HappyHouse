@@ -12,7 +12,7 @@
 									<i class="bi-window m-auto text-primary"></i>
 								</div>
 								<h3>자유게시판</h3>
-								<p class="lead mb-0">어쩌고 어쩌고</p>
+								<p class="lead mb-0">어쩌고 어쩌고어쩌고 어쩌고어쩌고 어쩌고어쩌고 어쩌고</p>
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -21,7 +21,9 @@
 									<i class="bi-layers m-auto text-primary"></i>
 								</div>
 								<h3>지도</h3>
-								<p class="lead mb-0">어쩌고저쩌고오오</p>
+								<p class="lead mb-0">
+									어쩌고저쩌고오오어쩌고저쩌고오오어쩌고저쩌고오오어쩌고저쩌고오오
+								</p>
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -30,7 +32,7 @@
 									<i class="bi-terminal m-auto text-primary"></i>
 								</div>
 								<h3>리뷰</h3>
-								<p class="lead mb-0">별 몇개 어쩌고 저쩌고</p>
+								<p class="lead mb-0">★★★★☆</p>
 							</div>
 						</div>
 					</div>
