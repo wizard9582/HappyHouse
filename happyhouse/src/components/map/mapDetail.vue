@@ -16,6 +16,10 @@
 
                 </div>
                 <h3>거래추이</h3>
+                    <div class="row">
+                        <div class="col-4"><line-chart></line-chart></div>
+                        <div class="col-4"><bar-chart></bar-chart></div>
+                    </div>
                 <div>
 
                 </div>
@@ -26,7 +30,10 @@
 <style scoped>
 </style>
 <script>
+import LineChart from '../common/LineChart.vue'
+import BarChart from '../common/BarChart.vue'
 export default {
+  components: { LineChart, BarChart },
     data(){
         return{
             houseInfo:{
