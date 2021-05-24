@@ -22,13 +22,13 @@
                 주택 정보들 3
                 주택 정보들 4
                 </b-card-text>
-                                <b-card-text>
+                <b-card-text>
                 주택 정보들 1
                 주택 정보들 2
                 주택 정보들 3
                 주택 정보들 4
                 </b-card-text>
-                                <b-card-text>
+                <b-card-text>
                 주택 정보들 1
                 주택 정보들 2
                 주택 정보들 3
