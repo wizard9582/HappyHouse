@@ -19,12 +19,3 @@ new Vue({
 	store,
 	render: (h) => h(App),
 }).$mount("#app");
-
-export default {
-	axios: axios.create({
-		baseURL: "http://localhost:8080/",
-		headers: {
-			"Content-Type": "application/json",
-		},
-	}),
-};
