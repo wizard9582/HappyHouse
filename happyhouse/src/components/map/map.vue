@@ -1,7 +1,45 @@
 <template>
-    <div id = "map">
+    <div id = "map" class="row">
         <router-link to="/map/detail">html 확인용 임시링크</router-link>
-        <div id="kakaomap" class = "container pt-3" style="width:80%;height:800px;"></div>
+        <div class = "col-7 m-5">        
+            <div id="kakaomap" style="width:100%;height:800px; flow:left"></div>
+        </div>
+        <div class = "col-4 card-body bg-gray">
+            <b-card
+                title="집 이름"
+                img-src="https://picsum.photos/600/300/?image=25"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="width:90%"
+                class="mb-2">
+
+                <hr>
+
+                <b-card-text>
+                주택 정보들 1
+                주택 정보들 2
+                주택 정보들 3
+                주택 정보들 4
+                </b-card-text>
+                                <b-card-text>
+                주택 정보들 1
+                주택 정보들 2
+                주택 정보들 3
+                주택 정보들 4
+                </b-card-text>
+                                <b-card-text>
+                주택 정보들 1
+                주택 정보들 2
+                주택 정보들 3
+                주택 정보들 4
+                </b-card-text>
+
+                <hr>
+                
+                <b-button href="#" variant="primary">상세정보</b-button>
+            </b-card>
+        </div>
     </div>
 </template>
 <style scoped>
@@ -40,7 +78,7 @@ export default {
         const mapTypeControl = new kakao.maps.MapTypeControl();
         map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPLEFT);
         const zoomControl = new kakao.maps.ZoomControl();
-        map.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
         
         const marker = new kakao.maps.Marker({
         position: markerPosition
