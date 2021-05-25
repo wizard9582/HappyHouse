@@ -34,7 +34,7 @@
                 주택 정보들 4
                 </b-card-text>
                 <hr>
-                
+                <b-button variant="primary">주택비교</b-button>
                 <b-button variant="primary" @click="showDetail">상세정보</b-button>
             </b-card>
         </div>
