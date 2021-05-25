@@ -15,6 +15,6 @@ public interface BoardRepo {
 	 List<StarBoard> select(String apt);
 	
 	List<Board> selectAll();
+
+	Board detail(String no);
 }
-
-

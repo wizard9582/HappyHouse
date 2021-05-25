@@ -39,7 +39,7 @@ public class BoardRestController {
 		System.out.println(star);
 		
 		int result = Math.min(boardService.insert(board), starService.insertStar(star));
-		
+		System.out.println("result : " + result);
 		if(result == 1) {
 			//System.out.println(등록 성공);
 			return 200;
@@ -83,6 +83,11 @@ public class BoardRestController {
 	public List<StarBoard> select(@PathVariable String apt) {
 		
 		return boardService.select(apt);
+	}
+	
+	@GetMapping("/detail/{no}")
+	public Board detail(@PathVariable String no) {
+		return boardService.detail(no); 
 	}
 	
 	@GetMapping("/search")
