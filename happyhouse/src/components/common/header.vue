@@ -38,7 +38,7 @@
 					<li class="nav-item">
 						<router-link to="/board/list" class="nav-link text-white">게시판</router-link></li>
 					<li class="nav-item">
-						<router-link to="/map/map" class="nav-link text-white">지도</router-link></li>
+						<router-link to="/map/역삼동" class="nav-link text-white">지도</router-link></li>
 					<li class="nav-item">
 						<router-link to="/favorite" class="nav-link text-white">즐겨찾기</router-link></li>
 					<li class="nav-item mr-5">
@@ -90,10 +90,14 @@ export default {
 	},
 	methods: {
 		sentenceSearch(){
-
+			this.$router.push({
+                path: "/map/" + this.input,
+            });
 		},
 		formSearch(){
-
+			this.$router.push({
+                path: "/map/" + this.dong,
+            });
 		},
 		selectCity(){
 			console.log("city!!");

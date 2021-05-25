@@ -1,7 +1,6 @@
 /* eslint-disable */
 <template>
     <div id = "map" class="row">
-        <router-link to="/map/detail">html 확인용 임시링크</router-link>
         <div class = "col-7 m-5">        
             <div id="kakaomap" style="width:100%;height:800px; flow:left"></div>
         </div>
@@ -47,15 +46,28 @@
 </style>
 
 <script>
-
+import rest from "@/js/httpCommon.js"
 export default {
     data(){
         return{
             selectApart:"",
             apartInfo:{},
+            dong:""
         }
     },
     created(){
+        this.dong = this.$route.params.dong;
+        rest.axios({
+                method: "get",
+                url: "/board/search/"+ this.no,
+            })
+                .then((res) => {
+                   this.board = res.data;
+                })
+                .catch((err) => {
+                    alert("목록 조회 실패");
+                    console.log(err);
+                });
 
     },
     mounted() {

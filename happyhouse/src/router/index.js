@@ -45,7 +45,7 @@ const routes = [
 		component: boardModify,
 	},
 	{
-		path: "/map/map",
+		path: "/map/:dong",
 		component: map,
 	},
 	{
