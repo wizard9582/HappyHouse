@@ -100,14 +100,14 @@ export default {
             });
 		},
 		selectCity(){
-			console.log("city!!");
+			//console.log("city!!");
 			this.dongOptions = [];
 			rest.axios({
 				url:"/house/addrInfo/"+this.city,
 				method: "get",
 			})
 				.then((res) => {
-					console.log(res.data);
+					//console.log(res.data);
 					this.gugunOptions = res.data;
 				})
 				.catch(() => {
@@ -115,13 +115,13 @@ export default {
 				});
 		},
 		selectGugun(){
-			console.log("city!!");
+			//console.log("city!!");
 			rest.axios({
 				url:"/house/addrInfo/" + this.city + "/" + this.gugun,
 				method: "get",
 			})
 				.then((res) => {
-					console.log(res.data);
+					//console.log(res.data);
 					this.dongOptions = res.data;
 				})
 				.catch(() => {
