@@ -4,7 +4,7 @@
 	<div id="app">
 		<header-comp @tryLogin="openLogin" v-bind:token="token"></header-comp>
 
-		<router-view />
+		<router-view :key="$route.fullPath"/>
 
 		<footer-comp></footer-comp>
 		<login-modal v-if="showLoginModal" @tryLogin="Login" @tryRegist="openRegist" @close="closeLogin"></login-modal>

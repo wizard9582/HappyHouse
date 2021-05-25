@@ -11,11 +11,11 @@
                 <div></div>
             </div>
             <div class="col-8">
-                <h3>최근 거래 내역</h3>
+                <h7>최근 거래 내역</h7>
                 <div>
 
                 </div>
-                <h3>거래추이</h3>
+                <h7>거래추이</h7>
                     <div class="row">
                         <div class="col-4"><line-chart></line-chart></div>
                         <div class="col-4"><bar-chart></bar-chart></div>
@@ -34,12 +34,11 @@ import LineChart from '../common/LineChart.vue'
 import BarChart from '../common/BarChart.vue'
 import rest from "@/js/httpCommon.js"
 export default {
-  components: { LineChart, BarChart },
+    components: { LineChart, BarChart },
     data(){
         return{
             aptName:"",
             houseInfo:{
-                houseName:"테스트용"
             },
             stars:{
                 allStar : "5.0"
@@ -55,22 +54,14 @@ export default {
                 url: "/board/search/"+ this.aptName,
             })
                 .then((res) => {
-                    console.log(res.data);
-                    //this.apartInfo = res.data;
+                    //console.log(res.data);
+                    this.houseInfo = res.data;
                 })
                 .catch((err) => {
                     alert("목록 조회 실패");
                     console.log(err);
                 })
                 .finally(() => {
-                    if (window.kakao && window.kakao.maps) {
-                        this.initMap()
-                    } else {
-                        const script = document.createElement('script')
-                        script.onload = () => kakao.maps.load(this.initMap);
-                        script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=a29e81b196aa8c99715b31d7ea6dae8e'
-                        document.head.appendChild(script)
-                    }
                 });
     }
 }

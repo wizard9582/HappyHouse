@@ -1,55 +1,51 @@
-/* eslint-disable */
 <template>
     <div id = "map" class="row">
         <div class = "col-7 m-5">        
             <div id="kakaomap" style="width:100%;height:800px; flow:left"></div>
         </div>
-        <div class = "col-4 card-body bg-gray" v-show="showCard">
+        <div class = "col-3 card-body bg-gray" v-show="showCard1 || showCard2">
             <b-card
-                :title= "selectApart"
+            v-show="showCard1"
+                :title= "selectApart1"
                 img-src="https://ifh.cc/g/YGIPYR.jpg"
                 img-alt="Image"
                 img-top
                 tag="article"
-                style="width:90%"
+                style="width:70%"
                 class="mb-2">
-
                 <hr>
-                <b-card-text>
-                주택 정보들 1
-                주택 정보들 2
-                주택 정보들 3
-                주택 정보들 4
-                </b-card-text>
-                <b-card-text>
-                주택 정보들 1
-                주택 정보들 2
-                주택 정보들 3
-                주택 정보들 4
-                </b-card-text>
-                <b-card-text>
-                주택 정보들 1
-                주택 정보들 2
-                주택 정보들 3
-                주택 정보들 4
-                </b-card-text>
+                <b-button variant="primary" @click="showDetail(1)">상세정보</b-button>
+                <b-button variant="primary" @click="discard1">비우기</b-button>
+            </b-card>
+            <b-button variant="danger" class="m-3" v-show="showCard1 && showCard2">주택비교</b-button>
+            <b-card
+            v-show="showCard2"
+                :title= "selectApart2"
+                img-src="https://ifh.cc/g/YGIPYR.jpg"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="width:70%"
+                class="mb-2">
                 <hr>
-                <b-button variant="primary">주택비교</b-button>
-                <b-button variant="primary" @click="showDetail">상세정보</b-button>
+                <b-button variant="primary" @click="showDetail(2)">상세정보</b-button>
+                <b-button variant="primary" @click="discard2">비우기</b-button>
             </b-card>
         </div>
     </div>
 </template>
 <style scoped>
 </style>
-
+/* eslint-disable */
 <script>
 import rest from "@/js/httpCommon.js"
 export default {
     data(){
         return{
-            showCard:false,
-            selectApart:"",
+            showCard1:false,
+            showCard2:false,
+            selectApart1:"",
+            selectApart2:"",
             apartInfo:{},
             dong:""
         }
@@ -137,14 +133,33 @@ export default {
             
         },
         openCard(aptName){
-            this.showCard = true;
-            this.selectApart = aptName;
-
+            if(this.showCard1){
+                this.showCard2 = true;
+                this.selectApart2 = aptName;
+            }else{
+                this.showCard1 = true;
+                this.selectApart1 = aptName;
+            }
         },
-        showDetail(){
-            this.$router.push({
-                path: "/map/detail/" + this.selectApart,
-            });
+        showDetail(target){
+
+            if(target == 1){
+                this.$router.push({
+                    path: "/map/detail/" + this.selectApart1,
+                });
+            }else{
+                this.$router.push({
+                    path: "/map/detail/" + this.selectApart2,
+                });
+            }
+        },
+        discard1(){
+            this.showCard1 = false;
+            this.selectApart1 = "";
+        },
+        discard2(){
+            this.showCard2 = false;
+            this.selectApart2 = "";
         }
     }
 }
