@@ -2,7 +2,7 @@
 
 <template>
 	<div id="app">
-		<header-comp @tryLogin="openLogin"></header-comp>
+		<header-comp @tryLogin="openLogin" v-bind:token="token"></header-comp>
 
 		<router-view />
 
@@ -100,30 +100,47 @@ export default {
 	methods:{
 		Login(user){
 			//console.log(user);
-
 			rest.axios({
-                    url:"/user/login",
-                    method: "post",
-                    data: user, //
-                })
-                    .then((res) => {
-						//console.log(res);
-                        if (res.data.status == true) {
-							this.token = res.data.token;
-							//console.log(this.token);
-                            alert("로그인 성공");
-							this.closeLogin();
-                        } else {
-                            alert("로그인 실패");
-                        }
-                    })
-                    .catch(() => {
-                        alert("로그인 실패");
-                    });
+				url:"/user/login",
+				method: "post",
+				data: user, //
+			})
+				.then((res) => {
+					//console.log(res);
+					if (res.data.status == true) {
+						this.token = res.data.token;
+						//console.log(this.token);
+						alert("로그인 성공");
+						this.closeLogin();
+					} else {
+						alert("로그인 실패");
+					}
+				})
+				.catch(() => {
+					alert("로그인 실패");
+				});
 
 		},
 		Regist(user){
-			console.log(user);
+			//console.log(user);
+			rest.axios({
+				url:"/user/signup",
+				method: "post",
+				data: user, //
+			})
+				.then((res) => {
+					//console.log(res);
+					if (res.data.status == true) {
+						//console.log(this.token);
+						alert("가입 성공");
+						this.openLogin();
+					} else {
+						alert("가입 실패");
+					}
+				})
+				.catch(() => {
+					alert("가입 실패");
+				});
 		},
 		openLogin(){
 			this.showLoginModal  = true;

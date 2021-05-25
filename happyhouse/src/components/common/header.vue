@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="row bg-secondary" >
+		<div class="row" >
 			<div class="col-xl-3 p-5" style="float: left">
 				<a class="navbar-brand" href="/">
 					<img :src="require('@/assets/logo.png')" alt="Ssafy logo" width="150" height="110"/>
@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-xl-6 text-center text-white">
 				<br/><br/>
-				<b><h1>HAPPY HOUSE -SSAFY Final Project-</h1></b>
+				<div id="mainTitle">HAPPY HOUSE -SSAFY Final Project-</div>
 				<br/>
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" placeholder="시 / 구(군) / 동" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -59,7 +59,8 @@
 					<li class="nav-item">
 						<router-link to="/favorite" class="nav-link text-white">즐겨찾기</router-link></li>
 					<li class="nav-item mr-5">
-						<button class="btn btn-primary" type="button" @click="$emit('tryLogin')">로그인</button></li>
+						<button v-if="!token" class="btn btn-primary" type="button" @click="$emit('tryLogin')">로그인</button>
+						<button v-else class="btn btn-primary" type="button" @click="$emit('tryLogout')">로그아웃</button></li>
 				</ul>
 			</div>
 			<hr />
@@ -70,12 +71,27 @@
 ul {
 	list-style: none;
 }
-
 li {
 	float: left;
+}
+.row {
+	background: url('https://ifh.cc/g/sTLaVF.jpg');
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position: center;
+}
+#mainTitle {
+	display: block;
+	font-size: 3.2em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
 }
 </style>
 <script>
 export default {
+	props:["token"],
 };
 </script>

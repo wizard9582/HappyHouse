@@ -22,7 +22,8 @@ public class HappyhouseBackendApplication implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(jwtInterceptor).addPathPatterns("/user/**").excludePathPatterns("/user/login");
+		registry.addInterceptor(jwtInterceptor).addPathPatterns("/user/**")
+		.excludePathPatterns("/user/login").excludePathPatterns("/user/signup");
 	}
 	
 	@Override
