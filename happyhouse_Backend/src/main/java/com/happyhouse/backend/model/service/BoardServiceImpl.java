@@ -45,5 +45,11 @@ public class BoardServiceImpl implements BoardService {
 		return repo.selectAll();
 	}
 
+	@Override
+	public Board detail(String no) {
+		// TODO Auto-generated method stub
+		return repo.detail(no);
+	}
+
 	
 }

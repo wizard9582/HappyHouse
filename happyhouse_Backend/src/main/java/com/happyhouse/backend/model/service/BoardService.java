@@ -16,4 +16,6 @@ public interface BoardService {
 	 List<StarBoard> select(String apt);
 	
 	List<Board> selectAll();
+
+	Board detail(String no);
 }

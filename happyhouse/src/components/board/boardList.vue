@@ -27,7 +27,7 @@
 									<a class="page-link" href="#">Next</a>
 								</li>
 								<li>
-									<b-button variant="success" @click="goEdit">글쓰기</b-button>
+									<b-button variant="success" @click="goWrite">글쓰기</b-button>
 								</li>
 							</ul>
 						</div>
@@ -44,6 +44,7 @@ export default {
 	data() {
 		return {
 			boards: {},
+			numbering: 0,
 		};
 	},
 	created() {
@@ -55,7 +56,9 @@ export default {
 			.then((res) => {
 				console.log(res);
 				this.boards = res.data;
-				//this.board = res.data;
+				console.log("length: " + this.boards.length);
+				let lastNum = this.boards[this.boards.length - 1].no;
+				this.numbering = parseInt(lastNum) + 1;
 			})
 			.catch((err) => {
 				alert("목록 조회 실패");
@@ -67,6 +70,12 @@ export default {
 			//console.log(items);
 			this.$router.push({
 				path: "/board/detail/" + items.no,
+			});
+			//console.log(noClicked);
+		},
+		goWrite() {
+			this.$router.push({
+				path: "/board/create/" + this.numbering,
 			});
 			//console.log(noClicked);
 		},

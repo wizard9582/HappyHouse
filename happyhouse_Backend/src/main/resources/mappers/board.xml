@@ -6,7 +6,7 @@
 
 	<insert id="insert" parameterType="Board">
 		<![CDATA[]]>
-		insert into board values(#{apt}, #{author}, #{date}, #{title}, #{content})
+		insert into board values(null, #{apt}, #{title}, #{author}, #{date},  #{content})
 	</insert>
 
 	<delete id="delete" parameterType="string">
@@ -53,13 +53,13 @@
 		where apt=#{apt}
 	</select>
 
-	<!-- 백업 
-		<select id="select" parameterType="string" resultType="Board">
+
+		<select id="detail" parameterType="string" resultType="Board">
 		select *
 		from board
-		where apt=#{apt}
+		where no=#{no}
 	</select>
-	 -->
+
 	
 	<select id="selectAll" parameterType="string" resultType="Board">
 		select * from board
