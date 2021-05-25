@@ -53,7 +53,7 @@ const routes = [
 		component: mapCompare,
 	},
 	{
-		path: "/map/detail",
+		path: "/map/detail/:aptName",
 		component: mapDetail,
 	},
 	{
