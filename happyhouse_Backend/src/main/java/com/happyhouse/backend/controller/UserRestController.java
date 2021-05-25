@@ -83,7 +83,7 @@ public class UserRestController {
 	@Transactional
 	@PostMapping("/signup")
 	public int insert(@RequestBody User user) {
-
+		System.out.println(user);
 		int result = userService.insertUser(user);
 
 		if (result == 1) {

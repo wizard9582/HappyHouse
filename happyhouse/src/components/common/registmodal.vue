@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 <transition name="regist-modal">
     <div class="modal-mask">

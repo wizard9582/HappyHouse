@@ -7,16 +7,19 @@
 	<insert id="insert" parameterType="Board">
 		<![CDATA[]]>
 		insert into board values(#{apt}, #{author}, #{date}, #{title}, #{content})
+		commit
 	</insert>
 
 	<delete id="delete" parameterType="string">
 		delete from board where no=#{no}
+		commit
 	</delete>
 
 	<update id="update" parameterType="Board">
 		update board
 		set date=#{date}, title=#{title}, content = #{content}
 		where no=#{no}
+		commit
 	</update>
 
 	<!-- 조인문  -->

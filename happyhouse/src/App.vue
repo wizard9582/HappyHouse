@@ -12,6 +12,7 @@
 	</div>
 </template>
 <style>
+
 .modal-mask {
 	position: fixed;
 	z-index: 9998;	
@@ -129,8 +130,8 @@ export default {
 				data: user, //
 			})
 				.then((res) => {
-					//console.log(res);
-					if (res.data.status == true) {
+					console.log(res);
+					if (res.data.status == 200) {
 						//console.log(this.token);
 						alert("가입 성공");
 						this.openLogin();
