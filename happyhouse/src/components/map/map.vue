@@ -15,7 +15,6 @@
                 class="mb-2">
 
                 <hr>
-
                 <b-card-text>
                 주택 정보들 1
                 주택 정보들 2
@@ -34,7 +33,6 @@
                 주택 정보들 3
                 주택 정보들 4
                 </b-card-text>
-
                 <hr>
                 
                 <b-button variant="primary" @click="showDetail">상세정보</b-button>
@@ -144,7 +142,9 @@ export default {
 
         },
         showDetail(){
-            this.selectApart;
+            this.$router.push({
+                path: "/map/detail/" + this.selectApart,
+            });
         }
     }
 }

@@ -2,7 +2,7 @@
     <div id = "mapDetail" class="container card">
         <div class="row card-body">
             <div class="col-4">
-                <img :src="require('@/assets/ssafy.png')" alt="houseImg"/>
+                <img  src="https://ifh.cc/g/YGIPYR.jpg" alt="houseImg"/>
                 <h3>{{houseInfo.houseName}}</h3>
                 <div></div>
                 <h3>평가 : {{stars.allStar}} / 5</h3>
@@ -32,10 +32,12 @@
 <script>
 import LineChart from '../common/LineChart.vue'
 import BarChart from '../common/BarChart.vue'
+import rest from "@/js/httpCommon.js"
 export default {
   components: { LineChart, BarChart },
     data(){
         return{
+            aptName:"",
             houseInfo:{
                 houseName:"테스트용"
             },
@@ -46,5 +48,30 @@ export default {
             board:[],
         }
     },
+    created(){
+        this.aptName = this.$route.params.aptName;
+        rest.axios({
+                method: "get",
+                url: "/board/search/"+ this.aptName,
+            })
+                .then((res) => {
+                    console.log(res.data);
+                    //this.apartInfo = res.data;
+                })
+                .catch((err) => {
+                    alert("목록 조회 실패");
+                    console.log(err);
+                })
+                .finally(() => {
+                    if (window.kakao && window.kakao.maps) {
+                        this.initMap()
+                    } else {
+                        const script = document.createElement('script')
+                        script.onload = () => kakao.maps.load(this.initMap);
+                        script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=a29e81b196aa8c99715b31d7ea6dae8e'
+                        document.head.appendChild(script)
+                    }
+                });
+    }
 }
 </script>
