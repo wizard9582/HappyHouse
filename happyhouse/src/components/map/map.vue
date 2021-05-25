@@ -5,7 +5,7 @@
         <div class = "col-7 m-5">        
             <div id="kakaomap" style="width:100%;height:800px; flow:left"></div>
         </div>
-        <div class = "col-4 card-body bg-gray">
+        <div class = "col-4 card-body bg-gray" v-show="selectApart">
             <b-card
                 title="집 이름"
                 img-src="https://picsum.photos/600/300/?image=25"
@@ -49,6 +49,15 @@
 <script>
 
 export default {
+    data(){
+        return{
+            selectApart:"",
+            apartInfo:{},
+        }
+    },
+    created(){
+
+    },
     mounted() {
         if (window.kakao && window.kakao.maps) {
             this.initMap()
@@ -61,7 +70,6 @@ export default {
     },
     methods: {
     initMap () {
-
         var iwContent = '<div style="padding:5px;">Hello World!</div>';
         var infowindow = new kakao.maps.InfoWindow({
             content : iwContent
