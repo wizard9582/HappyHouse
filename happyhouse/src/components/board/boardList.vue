@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
 	<div>
 		<div class="row">

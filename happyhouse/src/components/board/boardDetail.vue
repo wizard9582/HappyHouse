@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 	<div>
 		<hr />
@@ -19,8 +20,31 @@
 							<td>{{ board.no }}</td>
 						</tr>
 						<tr>
+							<th>작성자</th>
+							<td>{{ board.author }}</td>
+						</tr>
+						<tr>
+							<th>아파트명</th>
+							<td>{{ board.apt }}</td>
+						</tr>
+						<tr>
 							<th>제목</th>
 							<td colspan="5">{{ board.title }}</td>
+						</tr>
+
+						<tr>
+							<th>평점als</th>
+							<td colspan="5">{{ star.als }}</td>
+							<th>평점sft</th>
+							<td colspan="5">{{ star.sft }}</td>
+							<th>평점trf</th>
+							<td colspan="5">{{ star.trf }}</td>
+							<th>평점env</th>
+							<td colspan="5">{{ star.env }}</td>
+							<th>평점cvn</th>
+							<td colspan="5">{{ star.cvn }}</td>
+							<th>평점mng</th>
+							<td colspan="5">{{ star.mng }}</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,6 +56,19 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class="stars">
+					<label for="als">종합평점</label>
+					<input class="star star-5" id="star-5" type="radio" name="star" value="5" />
+					<label class="star star-5" for="star-5"></label>
+					<input class="star star-4" id="star-4" type="radio" name="star" value="4" />
+					<label class="star star-4" for="star-4"></label>
+					<input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+					<label class="star star-3" for="star-3"></label>
+					<input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+					<label class="star star-2" for="star-2"></label>
+					<input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+					<label class="star star-1" for="star-1"></label>
+				</div>
 			</b-col>
 			<b-col></b-col>
 		</b-row>
@@ -46,14 +83,71 @@
 		</b-row>
 	</div>
 </template>
-<style scoped></style>
+<style scoped>
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+div.stars {
+	width: 500px;
+	display: inline-block;
+}
+input.star {
+	display: none;
+}
+
+label.star {
+	float: right;
+	padding: 10px;
+	font-size: 36px;
+	color: #4a148c;
+	transition: all 0.2s;
+}
+
+input.star:checked ~ label.star:before {
+	content: "\f005";
+	color: #fd4;
+	transition: all 0.25s;
+}
+
+input.star-5:checked ~ label.star:before {
+	color: #fe7;
+	text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before {
+	color: #f62;
+}
+
+label.star:hover {
+	transform: rotate(-15deg) scale(1.3);
+}
+
+label.star:before {
+	content: "\f006";
+	font-family: FontAwesome;
+}
+</style>
 <script>
 import rest from "@/js/httpCommon.js";
 export default {
 	data() {
 		return {
-			board: {},
-			no: "",
+			board: {
+				no: "",
+				apt: "",
+				title: "",
+				author: "",
+				date: "",
+				content: "",
+			},
+			star: {
+				no: "",
+				als: "",
+				sft: "",
+				trf: "",
+				env: "",
+				cvn: "",
+				msg: "",
+			},
 		};
 	},
 	created() {
@@ -74,13 +168,13 @@ export default {
 	methods: {
 		goList() {
 			this.$router.push({
-				path: "/list",
+				path: "/board/list",
 			});
 			//console.log(noClicked);
 		},
 		goEdit() {
 			this.$router.push({
-				path: "/edit/" + this.no,
+				path: "/board/modify/" + this.no,
 			});
 			//console.log(noClicked);
 		},
@@ -92,7 +186,7 @@ export default {
 				})
 				.then(() => {
 					this.$router.push({
-						path: "/list",
+						path: "/board/list",
 					});
 				})
 				.catch((err) => {
