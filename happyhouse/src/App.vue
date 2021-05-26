@@ -107,7 +107,7 @@ export default {
 				data: user, //
 			})
 				.then((res) => {
-					//console.log(res);
+					console.log(res);
 					if (res.data.status == true) {
 						this.token = res.data.token;
 						//console.log(this.token);
@@ -137,7 +137,7 @@ export default {
 			})
 				.then((res) => {
 					console.log(res);
-					if (res.data.status == 200) {
+					if (res.data == 200) {
 						//console.log(this.token);
 						alert("가입 성공");
 						this.openLogin();
