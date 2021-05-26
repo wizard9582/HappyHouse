@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.happyhouse.backend.model.repo.NoticeRepo">
+
+	<insert id="insert" parameterType="Notice">
+		<![CDATA[]]>
+		insert into notice values(null, #{date}, #{title}, #{content})
+	</insert>
+
+	<delete id="delete" parameterType="string">
+		delete from notice where
+		no=#{no}
+	</delete>
+
+	<select id="detail" parameterType="string" resultType="Notice">
+		select *
+		from notice
+		where no=#{no}
+	</select>
+
+	<select id="selectAll" parameterType="string"
+		resultType="Notice">
+		select * from notice
+	</select>
+</mapper>
