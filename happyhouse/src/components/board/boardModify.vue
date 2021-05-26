@@ -225,16 +225,16 @@ export default {
 					.then((res) => {
 						console.log(res);
 						if (res.status === 200) {
-							alert("리뷰 등록 성공");
+							alert("리뷰 수정 성공");
 							this.$router.push({
 								path: "/board/detail/" + this.board.no,
 							});
 						} else {
-							alert("리뷰 등록 실패");
+							alert("리뷰 수정 실패");
 						}
 					})
 					.catch(() => {
-						alert("리뷰 등록 실패");
+						alert("리뷰 수정 실패");
 					});
 			}
 		},
@@ -255,9 +255,6 @@ export default {
 			});
 			//console.log(noClicked);
 		},
-		changeManage(){
-
-		}
 	},
 };
 </script>
