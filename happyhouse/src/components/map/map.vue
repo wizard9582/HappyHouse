@@ -1,6 +1,7 @@
 /* eslint-disable */
 <template>
     <div id = "map" class="row">
+        <div id = "heart" @click="addFavorite"/>
         <div class = "col-7 m-5">        
             <div id="kakaomap" style="width:100%;height:800px; flow:left"></div>
         </div>
@@ -36,6 +37,32 @@
     </div>
 </template>
 <style scoped>
+#heart {
+    position:relative;
+    overflow:hidden;
+    top:10px;
+    left:10px;
+    width:100px;
+    height:90px;
+    }
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: pink;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    }
+#heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    }
 </style>
 <script>
 import rest from "@/js/httpCommon.js"
@@ -165,6 +192,20 @@ export default {
             this.$router.push({
                 path: "/map/compare/" + this.selectApart1 + "/" + this.selectApart2,
             });
+        },
+        addFavorite(){
+            let id = localStorage.getItem('id');
+            let items = localStorage.getItem("itemof"+id);
+
+            if (!items) {
+                items = [];
+                items.push({type : 0, name: this.dong});
+                localStorage.setItem("itemof"+id, JSON.stringify(items));
+            } else {
+                let add = JSON.parse(items);
+                add.push({type : 0, name: this.dong});
+                localStorage.setItem("itemof"+id, JSON.stringify(add));
+            }
         }
     }
 }

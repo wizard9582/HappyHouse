@@ -2,7 +2,7 @@
 
 <template>
 	<div id="app">
-		<header-comp @tryLogin="openLogin" v-bind:token="token"></header-comp>
+		<header-comp @tryLogin="openLogin" @tryLogout="Logout" v-bind:token="token"></header-comp>
 
 		<router-view :key="$route.fullPath"/>
 
@@ -111,6 +111,8 @@ export default {
 					if (res.data.status == true) {
 						this.token = res.data.token;
 						//console.log(this.token);
+						localStorage.setItem('token', this.token);
+						localStorage.setItem('id', user.id);
 						alert("로그인 성공");
 						this.closeLogin();
 					} else {
@@ -121,6 +123,10 @@ export default {
 					alert("로그인 실패");
 				});
 
+		},
+		Logout(){
+			this.token = "";
+			localStorage.clear();
 		},
 		Regist(user){
 			//console.log(user);

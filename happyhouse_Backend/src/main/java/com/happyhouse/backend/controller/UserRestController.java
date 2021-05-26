@@ -79,6 +79,12 @@ public class UserRestController {
 			return 400;
 		}
 	}
+	
+	@GetMapping("/info/{id}")
+	public User getInfo(@PathVariable String id) {
+
+		return userService.getUser(id);
+	}
 
 	@Transactional
 	@PostMapping("/signup")
