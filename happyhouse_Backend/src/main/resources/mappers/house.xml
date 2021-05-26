@@ -5,7 +5,7 @@
 <!-- name space: 쿼리를 구별하기 위한 키워드 -->
 <mapper namespace="com.happyhouse.backend.model.repo.HouseRepo">
 	<select id="getHouse" parameterType="String" resultType="House">
-		select * 
+		select AptName as name, dong, lat, lng
 		from houseinfo
 		where dong = #{dong}
 	</select>

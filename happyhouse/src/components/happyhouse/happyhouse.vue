@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 bg-light p-3">
-					<b-cardno-body style="max-width: 20rem;">
+					<b-card-body style="max-width: 20rem;">
 						<b-card-body>
 							<b-card-title>게시판</b-card-title>
 							<b-card-text>자유롭게 이야기를 나누는 곳입니다.</b-card-text>
@@ -24,19 +24,19 @@
 							<b-list-group-item>Vestibulum at eros</b-list-group-item>
 						</b-list-group>
 
-					</b-cardno-body>
+					</b-card-body>
 				</div>
 				<div class="col-lg-4 bg-light p-3">
-					<b-cardno-body style="max-width: 20rem;">
+					<div style="max-width: 20rem;">
 						<b-card-body>
 							<b-card-title>주변지도</b-card-title>
 							<b-card-text>현재 위치를 기준으로 거래지도를 나타냅니다.</b-card-text>
 						</b-card-body>
-						<div id="kakaomap" style="width:90%;height:70%; flow:left"></div>
-					</b-cardno-body>
+					</div>
+					<div id="kakaomap" style="width:90%;height:70%; flow:left"></div>
 				</div>
 				<div class="col-lg-4 bg-light p-3">
-					<b-cardno-body style="max-width: 20rem;">
+					<b-card-body style="max-width: 20rem;">
 						<b-card-body>
 							<b-card-title>최근 리뷰</b-card-title>
 							<b-card-text>주택의 평가를 남기는 곳입니다.</b-card-text>
@@ -54,7 +54,7 @@
 							<b-list-group-item>Vestibulum at eros</b-list-group-item>
 						</b-list-group>
 
-					</b-cardno-body>
+					</b-card-body>
 				</div>
 			</div>
 		</div>

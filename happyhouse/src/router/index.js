@@ -9,7 +9,6 @@ import boardList from "../components/board/boardList.vue";
 import boardModify from "../components/board/boardModify.vue";
 
 import map from "../components/map/map.vue";
-import mapCompare from "../components/map/mapCompare.vue";
 import mapDetail from "../components/map/mapDetail.vue";
 
 import mypage from "../components/mypage/mypage.vue";
@@ -45,15 +44,11 @@ const routes = [
 		component: boardModify,
 	},
 	{
-		path: "/map/map",
+		path: "/map/:dong",
 		component: map,
 	},
 	{
-		path: "/map/compare",
-		component: mapCompare,
-	},
-	{
-		path: "/map/detail",
+		path: "/map/detail/:aptName",
 		component: mapDetail,
 	},
 	{

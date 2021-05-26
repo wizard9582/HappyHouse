@@ -7,11 +7,13 @@
 	<insert id="insertUser" parameterType="User">
 		insert into USER (id, name, pass, nick, address, phone) 
 		values (#{id},#{name}, #{pass}, #{nick}, #{address}, #{phone})
+		commit
 	</insert>
 	<delete id="deleteUser" parameterType="string">
 		delete 
 		from user 
 		where id = #{id}
+		commit
 	</delete>
 	<select id="getUser" parameterType="string" resultType="User">
 		select * 
@@ -22,5 +24,6 @@
 		update user 
 		set name=#{name},pass=#{pass}, nick=#{nick}, address=#{address}, phone=#{phone} 
 		where id=#{id}
+		commit
 	</update>
 </mapper>

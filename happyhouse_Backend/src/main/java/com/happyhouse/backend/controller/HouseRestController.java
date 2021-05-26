@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.happyhouse.backend.dto.House;
 import com.happyhouse.backend.model.service.AddressService;
 import com.happyhouse.backend.model.service.AttLocService;
 import com.happyhouse.backend.model.service.HouseDealService;
@@ -45,6 +46,11 @@ public class HouseRestController {
 		map.put("gugun", gugun);
 		List<String> list = addressservice.getInfoDong(map);
 		return list;
+	}
+	
+	@GetMapping("/houseInfo/{dong}")
+	public List<House> getHouse(@PathVariable String dong) {
+		return houseservice.getHouse(dong);
 	}
 
 }

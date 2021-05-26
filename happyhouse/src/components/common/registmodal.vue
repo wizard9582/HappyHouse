@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 <transition name="regist-modal">
     <div class="modal-mask">
@@ -7,18 +8,20 @@
                     <slot name="header">회원가입</slot>
                 </div>
 
-                <div class="modal-body">
-                    <slot name="body">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">ID</span>
-                        </div>
-                        <input type="text" class="form-control" v-model="user.id" placeholder="Username">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">PW</span>
-                        </div>
-                        <input type="text" class="form-control" v-model="user.pass" placeholder="Password">
-                    </slot>
-                </div>
+				<div class="modal-body">
+					<label for="loginID">ID :</label>
+					<input type="text" class="form-control" id="loginID" v-model="user.id">
+					<label for="loginPW">Password :</label>
+					<input type="password" class="form-control" id="loginPW" v-model="user.pass">
+                    <label for="Name">Name :</label>
+					<input type="text" class="form-control" id="Name" v-model="user.name">
+                    <label for="Nick">NickName :</label>
+					<input type="text" class="form-control" id="Nick" v-model="user.nick">
+                    <label for="Address">Address :</label>
+					<input type="text" class="form-control" id="Address" v-model="user.address">
+                    <label for="Phone">Phone :</label>
+					<input type="text" class="form-control" id="Phone" v-model="user.phone">
+				</div>
 
                 <div class="modal-footer">
                     <slot name="footer">
@@ -39,7 +42,11 @@ export default {
         return{
             user : {
                 id : "",
-                pass : ""
+                pass : "",
+                name : "",
+                nick : "",
+                address : "",
+                phone : "",
             },
         }
     },

@@ -2,9 +2,9 @@
 
 <template>
 	<div id="app">
-		<header-comp @tryLogin="openLogin"></header-comp>
+		<header-comp @tryLogin="openLogin" v-bind:token="token"></header-comp>
 
-		<router-view />
+		<router-view :key="$route.fullPath"/>
 
 		<footer-comp></footer-comp>
 		<login-modal v-if="showLoginModal" @tryLogin="Login" @tryRegist="openRegist" @close="closeLogin"></login-modal>
@@ -12,6 +12,7 @@
 	</div>
 </template>
 <style>
+
 .modal-mask {
 	position: fixed;
 	z-index: 9998;	
@@ -100,30 +101,47 @@ export default {
 	methods:{
 		Login(user){
 			//console.log(user);
-
 			rest.axios({
-                    url:"/user/login",
-                    method: "post",
-                    data: user, //
-                })
-                    .then((res) => {
-						//console.log(res);
-                        if (res.data.status == true) {
-							this.token = res.data.token;
-							//console.log(this.token);
-                            alert("로그인 성공");
-							this.closeLogin();
-                        } else {
-                            alert("로그인 실패");
-                        }
-                    })
-                    .catch(() => {
-                        alert("로그인 실패");
-                    });
+				url:"/user/login",
+				method: "post",
+				data: user, //
+			})
+				.then((res) => {
+					//console.log(res);
+					if (res.data.status == true) {
+						this.token = res.data.token;
+						//console.log(this.token);
+						alert("로그인 성공");
+						this.closeLogin();
+					} else {
+						alert("로그인 실패");
+					}
+				})
+				.catch(() => {
+					alert("로그인 실패");
+				});
 
 		},
 		Regist(user){
-			console.log(user);
+			//console.log(user);
+			rest.axios({
+				url:"/user/signup",
+				method: "post",
+				data: user, //
+			})
+				.then((res) => {
+					console.log(res);
+					if (res.data.status == 200) {
+						//console.log(this.token);
+						alert("가입 성공");
+						this.openLogin();
+					} else {
+						alert("가입 실패");
+					}
+				})
+				.catch(() => {
+					alert("가입 실패");
+				});
 		},
 		openLogin(){
 			this.showLoginModal  = true;

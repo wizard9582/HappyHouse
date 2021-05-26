@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 <transition name="login-modal">
     <div class="modal-mask">
