@@ -76,7 +76,7 @@ const routes = [
 		component: noticeList,
 	},
 	{
-		path: "/favorite/:id",
+		path: "/favorite",
 		component: favorite,
 	},
 ];

@@ -199,11 +199,11 @@ export default {
 
             if (!items) {
                 items = [];
-                items.push({type : 0, name: this.dong});
+                items.push({type : 1, name: this.dong});
                 localStorage.setItem("itemof"+id, JSON.stringify(items));
             } else {
                 let add = JSON.parse(items);
-                add.push({type : 0, name: this.dong});
+                add.push({type : 1, name: this.dong});
                 localStorage.setItem("itemof"+id, JSON.stringify(add));
             }
         }
