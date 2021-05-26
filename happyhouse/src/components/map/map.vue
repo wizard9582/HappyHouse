@@ -18,7 +18,7 @@
                 <b-button variant="primary" @click="showDetail(1)">상세정보</b-button>
                 <b-button variant="primary" @click="discard1">비우기</b-button>
             </b-card>
-            <b-button variant="danger" class="m-3" v-show="showCard1 && showCard2">주택비교</b-button>
+            <b-button variant="danger" class="m-3" v-show="showCard1 && showCard2" @click="goCompare">주택비교</b-button>
             <b-card
             v-show="showCard2"
                 :title= "selectApart2"
@@ -160,6 +160,11 @@ export default {
         discard2(){
             this.showCard2 = false;
             this.selectApart2 = "";
+        },
+        goCompare(){
+            this.$router.push({
+                path: "/map/compare/" + this.selectApart1 + "/" + this.selectApart2,
+            });
         }
     }
 }

@@ -10,6 +10,7 @@ import boardModify from "../components/board/boardModify.vue";
 
 import map from "../components/map/map.vue";
 import mapDetail from "../components/map/mapDetail.vue";
+import mapCompare from "../components/map/mapCompare.vue";
 
 import mypage from "../components/mypage/mypage.vue";
 import mypageCreate from "../components/mypage/mypageCreate.vue";
@@ -50,6 +51,10 @@ const routes = [
 	{
 		path: "/map/detail/:aptName",
 		component: mapDetail,
+	},
+	{
+		path: "/map/compare/:aptName1/:aptName2",
+		component: mapCompare,
 	},
 	{
 		path: "/mypage/mypage",
