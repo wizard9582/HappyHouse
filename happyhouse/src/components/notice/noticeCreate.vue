@@ -68,7 +68,7 @@ export default {
 						if (res.status === 200) {
 							alert("도서 등록 성공");
 							this.$router.push({
-								path: "/board/list/",
+								path: "/notice/list/",
 							});
 						} else {
 							alert("도서 등록 실패");

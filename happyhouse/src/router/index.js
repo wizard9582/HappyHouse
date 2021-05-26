@@ -69,15 +69,15 @@ const routes = [
 		component: mypageModify,
 	},
 	{
-		path: "/notice/create",
+		path: "/notice/create/:no",
 		component: noticeCreate,
 	},
 	{
-		path: "/notice/detail",
+		path: "/notice/detail/:no",
 		component: noticeDetail,
 	},
 	{
-		path: "/notice/modify",
+		path: "/notice/modify/:no",
 		component: noticeModify,
 	},
 	{

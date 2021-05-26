@@ -12,7 +12,7 @@
 				<div id="mainTitle">HAPPY HOUSE -SSAFY Final Project-</div>
 				<br/>
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="동 이름으로 바로 검색" aria-label="Recipient's username" aria-describedby="button-addon2" v-model="input">
+					<input type="text" class="form-control" placeholder="동 이름으로 바로 검색" aria-label="Recipient's username" aria-describedby="button-addon2" v-model="input" v-on:keyup.enter="sentenceSearch">
 					<div class="input-group-append">
 						<button class="btn btn-success" type="button" @click="sentenceSearch">검색</button>
 					</div>
@@ -34,7 +34,7 @@
 			<div class="menuWrap col-xl-3 p-3 text-white" style="float: right">
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
-						<router-link to="/notice" class="nav-link text-white">공지사항</router-link></li>
+						<router-link to="/notice/list" class="nav-link text-white">공지사항</router-link></li>
 					<li class="nav-item">
 						<router-link to="/board/list" class="nav-link text-white">게시판</router-link></li>
 					<li class="nav-item">
@@ -86,6 +86,12 @@ export default {
 			gugun : "",
 			dong : "",
 			input : ""
+		}
+	},
+	created() {
+		let getToken = localStorage.getItem("token")
+		if(getToken){
+			this.token = getToken
 		}
 	},
 	methods: {
