@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.happyhouse.backend.dto.Board;
 import com.happyhouse.backend.dto.Notice;
 import com.happyhouse.backend.model.service.NoticeService;
 
@@ -28,9 +29,9 @@ public class NoticeRestController {
 	@PostMapping("/insert")
 	public int insert(@RequestBody Notice notice) {
 		
-		System.out.println(notice);
+		int result = noticeService.insert(notice);
 		
-		if(true) {
+		if(result == 1) {
 			//System.out.println(등록 성공);
 			return 200;
 		}else {
@@ -41,7 +42,9 @@ public class NoticeRestController {
 	@PutMapping("/update")
 	public int update(@RequestBody Notice notice) {
 		
-		if(true) {
+		int result = noticeService.update(notice);
+		
+		if(result == 1) {
 			//System.out.println(등록 성공);
 			return 200;
 		}else {
@@ -52,7 +55,9 @@ public class NoticeRestController {
 	@DeleteMapping("/delete/{no}")
 	public int delete(@PathVariable String no) {
 		
-		if(true) {
+		int result = noticeService.delete(no);
+		
+		if(result == 1) {
 			//System.out.println(등록 성공);
 			return 200;
 		}else {
