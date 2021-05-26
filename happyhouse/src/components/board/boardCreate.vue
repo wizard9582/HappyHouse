@@ -211,16 +211,16 @@ export default {
 					.then((res) => {
 						console.log(res);
 						if (res.status === 200) {
-							alert("도서 등록 성공");
+							alert("리뷰 등록 성공");
 							this.$router.push({
 								path: "/board/list/",
 							});
 						} else {
-							alert("도서 등록 실패");
+							alert("리뷰 등록 실패");
 						}
 					})
 					.catch(() => {
-						alert("도서 등록 실패");
+						alert("리뷰 등록 실패");
 					});
 			}
 		},

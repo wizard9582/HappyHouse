@@ -4,32 +4,28 @@ public class HouseDeal {
 	private String name;
 	private String price;
 	private String area;
-	private String date;
+	private String dealYear;
+	private String dealMonth;
 	
 	
 	@Override
 	public String toString() {
-		return "HouseDeal [name=" + name + ", price=" + price + ", area=" + area + ", date=" + date + "]";
+		return "HouseDeal [name=" + name + ", price=" + price + ", area=" + area + ", date=" + dealYear + dealMonth + "]";
 	}
 	
 	public HouseDeal() {
 		super();
 	}
 
-	public HouseDeal(String name, String price, String area, String date) {
+	public HouseDeal(String name, String price, String area, String dealYear, String dealMonth) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.area = area;
-		this.date = date;
+		this.dealYear = dealYear;
+		this.dealMonth = dealMonth;
 	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getPrice() {
 		return price;
 	}
@@ -42,10 +38,30 @@ public class HouseDeal {
 	public void setArea(String area) {
 		this.area = area;
 	}
-	public String getDate() {
-		return date;
+
+	public String getName() {
+		return name;
 	}
-	public void setDate(String date) {
-		this.date = date;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	public String getDealYear() {
+		return dealYear;
+	}
+
+	public void setDealYear(String dealYear) {
+		this.dealYear = dealYear;
+	}
+
+	public String getDealMonth() {
+		return dealMonth;
+	}
+
+	public void setDealMonth(String dealMonth) {
+		this.dealMonth = dealMonth;
+	}
+	
+	
 }

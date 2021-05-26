@@ -6,5 +6,5 @@ import com.happyhouse.backend.dto.HouseDeal;
 
 public interface HouseDealService {
 
-	List<HouseDeal> getHouseDeal(String dong);
+	List<HouseDeal> getHouseDeal(String aptname);
 }

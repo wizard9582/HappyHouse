@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.happyhouse.backend.dto.House;
+import com.happyhouse.backend.dto.HouseDeal;
 import com.happyhouse.backend.model.service.AddressService;
 import com.happyhouse.backend.model.service.AttLocService;
 import com.happyhouse.backend.model.service.HouseDealService;
@@ -52,5 +53,12 @@ public class HouseRestController {
 	public List<House> getHouse(@PathVariable String dong) {
 		return houseservice.getHouse(dong);
 	}
-
+	
+	@GetMapping("/houseDeal/{aptName}")
+	public List<HouseDeal> getDeal(@PathVariable String aptName) {
+		
+		System.out.println("this ---->" + aptName);
+		
+		return dealservice.getHouseDeal(aptName);
+	}
 }
