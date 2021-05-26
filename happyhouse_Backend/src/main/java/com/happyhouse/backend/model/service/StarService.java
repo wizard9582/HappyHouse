@@ -1,5 +1,7 @@
 package com.happyhouse.backend.model.service;
 
+import java.util.List;
+
 import com.happyhouse.backend.dto.Star;
 
 public interface StarService {
@@ -10,4 +12,6 @@ public interface StarService {
 	Star getStar(String no);
 
 	int changeStar(Star star);
+	
+	List<Star> selectAll();
 }

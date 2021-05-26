@@ -86,14 +86,21 @@ public class BoardRestController {
 	}
 	
 	@GetMapping("/detail/{no}")
-	public Board detail(@PathVariable String no) {
-		return boardService.detail(no); 
+	public StarBoard selectNo(@PathVariable String no) {
+		System.out.println("----->" + no);
+		return boardService.selectNo(no);
 	}
 	
 	@GetMapping("/search")
 	public List<Board> selectAll() {
 		System.out.println("in check");
 		List<Board> list = boardService.selectAll();
+		return list;
+	}
+	@GetMapping("/star")
+	public List<Star> starAll() {
+		System.out.println("in check");
+		List<Star> list = starService.selectAll();
 		return list;
 	}
 }

@@ -11,14 +11,12 @@
 
 	<delete id="delete" parameterType="string">
 		delete from board where no=#{no}
-		commit
 	</delete>
 
 	<update id="update" parameterType="Board">
 		update board
 		set date=#{date}, title=#{title}, content = #{content}
 		where no=#{no}
-		commit
 	</update>
 
 	<!-- 조인문  -->
@@ -54,9 +52,16 @@
 		on b.no = s.no
 		where apt=#{apt}
 	</select>
+	
+	<select id="selectNo" parameterType="string" resultMap="StarBoard">
+		select b.no, b.apt, b.author, b.date, b.title, b.content, s.als, s.sft, s.trf, s.env, s.cvn, s.mng
+		from board as b
+		join star as s
+		on b.no = s.no
+		where b.no=#{no}
+	</select>
 
-
-		<select id="detail" parameterType="string" resultType="Board">
+	<select id="detail" parameterType="string" resultType="Board">
 		select *
 		from board
 		where no=#{no}

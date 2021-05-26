@@ -8,10 +8,10 @@
 				<div class="col-lg-4 bg-light p-3">
 					<b-card-body style="max-width: 20rem;">
 						<b-card-body>
-							<b-card-title>게시판</b-card-title>
-							<b-card-text>자유롭게 이야기를 나누는 곳입니다.</b-card-text>
+							<b-card-title>공지사항</b-card-title>
+							<b-card-text>사이트의 뉴스가 올라옵니다.</b-card-text>
 						</b-card-body>
-
+						
 						<b-list-group flush>
 							<b-list-group-item>Cras justo odio</b-list-group-item>
 							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
@@ -42,16 +42,15 @@
 							<b-card-text>주택의 평가를 남기는 곳입니다.</b-card-text>
 						</b-card-body>
 
-						<b-list-group flush>
-							<b-list-group-item>Cras justo odio</b-list-group-item>
-							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-							<b-list-group-item>Vestibulum at eros</b-list-group-item>
-							<b-list-group-item>Cras justo odio</b-list-group-item>
-							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-							<b-list-group-item>Vestibulum at eros</b-list-group-item>
-							<b-list-group-item>Cras justo odio</b-list-group-item>
-							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-							<b-list-group-item>Vestibulum at eros</b-list-group-item>
+						<b-list-group flush v-for="(board, index) in boards" :key="index" >
+							<b-list-group-item v-if="index > numbering - 5" class="m-1">
+								<span>
+									{{board.title}} 
+								</span>
+								<span>
+									{{board.date}}
+								</span>
+							</b-list-group-item>
 						</b-list-group>
 
 					</b-card-body>
@@ -63,10 +62,33 @@
 	</div>
 </template>
 <script>
+import rest from "@/js/httpCommon.js";
 export default {
-	name: "Home",
-	components: {},
-	    mounted() {
+	data(){
+		return{
+			numbering : "",
+			notices : {},
+			boards : {},
+		}
+	},
+	created(){
+		rest.axios({
+				method: "get",
+				url: "/board/search/",
+			})
+			.then((res) => {
+				//console.log(res);
+				this.boards = res.data;
+				//console.log("length: " + this.boards.length);
+				let lastNum = this.boards[this.boards.length - 1].no;
+				this.numbering = parseInt(lastNum) + 1;
+			})
+			.catch((err) => {
+				alert("목록 조회 실패");
+				console.log(err);
+			});
+	},
+	mounted() {
         if (window.kakao && window.kakao.maps) {
             this.initMap()
         } else {

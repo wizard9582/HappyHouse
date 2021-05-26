@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <div id = "map" class="row">
         <div class = "col-7 m-5">        
@@ -36,7 +37,6 @@
 </template>
 <style scoped>
 </style>
-/* eslint-disable */
 <script>
 import rest from "@/js/httpCommon.js"
 export default {

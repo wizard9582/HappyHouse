@@ -21,7 +21,11 @@
 	</select>
 	<update id="changeStar" parameterType="Star">
 		update star 
-		set als=#{als},sft=#{sft},trf=#{trf},env=#{env},cvn=#{cvn},mng=#{mng},
+		set als=#{als},sft=#{sft},trf=#{trf},env=#{env},cvn=#{cvn},mng=#{mng}
 		where no=#{no}
 	</update>
+	<select id="selectAll" resultType="Star">
+		select * 
+		from star 
+	</select>
 </mapper>
