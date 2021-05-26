@@ -31,9 +31,9 @@
                     </b-list-group>
                 <h5>거래추이</h5>
                 <h6>가격변화</h6>
-                <line-chart id="linechart" :data="monthlyDeal" :key="componentKey"></line-chart>
+                <area-chart id="linechart" :data="monthlyPrice" :key="componentKey"></area-chart>
                 <h6>거래량 변화</h6>
-                <column-chart id="columnchart" :data="monthlyPrice" :key="componentKey"></column-chart>
+                <column-chart id="columnchart" :data="monthlyDeal" :key="componentKey"></column-chart>
             </div>
         </div>
     </div>
