@@ -29,14 +29,11 @@
                             </span>
                         </b-list-group-item>
                     </b-list-group>
-                <h6>거래추이</h6>
-                    <div class="row">
-                        <div class="col-4"><line-chart></line-chart></div>
-                        <div class="col-4"><bar-chart></bar-chart></div>
-                    </div>
-                <div>
-
-                </div>
+                <h5>거래추이</h5>
+                <h6>가격변화</h6>
+                <line-chart id="linechart" :data="monthlyDeal" :key="componentKey"></line-chart>
+                <h6>거래량 변화</h6>
+                <column-chart id="columnchart" :data="monthlyPrice" :key="componentKey"></column-chart>
             </div>
         </div>
     </div>
@@ -44,20 +41,23 @@
 <style scoped>
 </style>
 <script>
-import LineChart from '../common/LineChart.vue'
-import BarChart from '../common/BarChart.vue'
 import rest from "@/js/httpCommon.js"
 import StarRating from 'vue-star-rating'
+
 export default {
-    components: { LineChart, BarChart, StarRating },
+    components: {StarRating },
     data(){
         return{
+            componentKey : 0,
             aptName:"",
             boardCount : "",
             dealCount : "",
             houseDeals:[],
             boards:[],
             stars:[],
+            monthlyDeal:{"1월" : 0,"2월" : 0,"3월" : 0,"4월" : 0,"5월" : 0,"6월" : 0,"7월" : 0,"8월" : 0,"9월" : 0,"10월" : 0,"11월" : 0,"12월" : 0},
+            sumPrice:{"1월" : 0,"2월" : 0,"3월" : 0,"4월" : 0,"5월" : 0,"6월" : 0,"7월" : 0,"8월" : 0,"9월" : 0,"10월" : 0,"11월" : 0,"12월" : 0},
+            monthlyPrice:{"1월" : 0,"2월" : 0,"3월" : 0,"4월" : 0,"5월" : 0,"6월" : 0,"7월" : 0,"8월" : 0,"9월" : 0,"10월" : 0,"11월" : 0,"12월" : 0},
         }
     },
     created(){
@@ -77,6 +77,21 @@ export default {
                     console.log(err);
                 })
                 .finally(() => {
+                    this.houseDeals.forEach(deal => {
+
+                        this.monthlyDeal[deal.dealMonth + "월"] ++;
+                        this.sumPrice[deal.dealMonth + "월"] += (parseInt(deal.price) / parseInt(deal.area));
+                    });
+
+                    for(let i = 1; i < 13; i++){
+                        if(this.monthlyDeal[i + "월"] != 0){
+                            this.monthlyPrice[i + "월"] = this.sumPrice[i + "월"] / this.monthlyDeal[i + "월"];
+                        }else{
+                            this.monthlyPrice[i + "월"] = 0;
+                        }
+                        this.componentKey += 1;
+                    }
+
                     this.dealCount = this.houseDeals.length;
                             rest.axios({
                                 method: "get",
@@ -124,6 +139,14 @@ export default {
                 return uk + "억 " + cheon + "천만원";
             }
         }
-    }
+    },
+    methods: {
+        getDeal(){
+            return this.monthlyDeal;
+        },
+        getPrice(){
+            return this.monthlyPrice;
+        }
+    },
 }
 </script>

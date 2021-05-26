@@ -8,16 +8,16 @@ export default {
     return {
       datacollection: {
         //Data to be represented on x-axis
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        labels: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
         datasets: [
           {
-            label: 'Data One',
-            backgroundColor: '#f87979',
+            label: '월별 거래량',
+            backgroundColor: '#A9BCF5',
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
             //Data to be represented on y-axis
-            data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+            data: [10,20,30,10,20,30,10,20,30,10,20,30]
           }
         ]
       },
