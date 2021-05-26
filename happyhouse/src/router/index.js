@@ -28,7 +28,7 @@ const routes = [
 		component: HappyHouse,
 	},
 	{
-		path: "/board/create",
+		path: "/board/create/:no",
 		component: boardCreate,
 	},
 	{

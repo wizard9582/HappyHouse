@@ -61,7 +61,7 @@ public class Board {
 	}
 	@Override
 	public String toString() {
-		return "Board [no=" + no + ", apt=" + apt + ", author=" + author + ", date=" + date + ", content=" + content
+		return "Board [no=" + no + "title=" + title +", apt=" + apt + ", author=" + author + ", date=" + date + ", content=" + content
 				+ "]";
 	}
     
