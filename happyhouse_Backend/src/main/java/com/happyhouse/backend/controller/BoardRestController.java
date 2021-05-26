@@ -69,7 +69,7 @@ public class BoardRestController {
 	@DeleteMapping("/delete/{no}")
 	public int delete(@PathVariable String no) {
 		
-		int result = Math.min(boardService.delete(no), starService.deleteStar(no));
+		int result = boardService.delete(no);
 		
 		if(result == 1) {
 			//System.out.println(수정 성공);
