@@ -1,5 +1,7 @@
 package com.happyhouse.backend.model.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +53,11 @@ public class StarServiceImpl implements StarService{
 	public int changeStar(Star star) {
 		// TODO Auto-generated method stub
 		return repo.changeStar(star);
+	}
+
+	@Override
+	public List<Star> selectAll() {
+		// TODO Auto-generated method stub
+		return repo.selectAll();
 	}
 }

@@ -12,7 +12,9 @@ public interface BoardRepo {
 
 	int delete(String no);
 
-	 List<StarBoard> select(String apt);
+	List<StarBoard> select(String apt);
+	
+	StarBoard selectNo(String no);
 	
 	List<Board> selectAll();
 

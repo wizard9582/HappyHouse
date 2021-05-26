@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <div id = "mapDetail" class="container card">
         <div class="row card-body">

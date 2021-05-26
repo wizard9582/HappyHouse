@@ -19,10 +19,10 @@ import com.happyhouse.backend.dto.StarBoard;
 import com.happyhouse.backend.model.service.BoardService;
 import com.happyhouse.backend.model.service.StarService;
 
-@RequestMapping("/board")
+@RequestMapping("/notice")
 @CrossOrigin("*")
 @RestController
-public class BoardRestController {
+public class NoticeRestController {
 
 	@Autowired
 	BoardService boardService;
@@ -30,17 +30,11 @@ public class BoardRestController {
 	StarService starService;
 	
 	@PostMapping("/insert")
-	public int insert(@RequestBody StarBoard starboard) {
-		
-		Board board = starboard.getBoard();
-		Star star = starboard.getStar();
+	public int insert(@RequestBody Board board) {
 		
 		System.out.println(board);
-		System.out.println(star);
 		
-		int result = Math.min(boardService.insert(board), starService.insertStar(star));
-		System.out.println("result : " + result);
-		if(result == 1) {
+		if(true) {
 			//System.out.println(등록 성공);
 			return 200;
 		}else {
@@ -49,17 +43,10 @@ public class BoardRestController {
 	}
 	
 	@PutMapping("/update")
-	public int update(@RequestBody StarBoard starboard) {
-		Board board = starboard.getBoard();
-		Star star = starboard.getStar();
+	public int update(@RequestBody Board board) {
 		
-		System.out.println(board);
-		System.out.println(star);
-		
-		int result = Math.min(boardService.update(board), starService.changeStar(star));
-		
-		if(result == 1) {
-			//System.out.println(수정 성공);
+		if(true) {
+			//System.out.println(등록 성공);
 			return 200;
 		}else {
 			return 400;
@@ -69,21 +56,14 @@ public class BoardRestController {
 	@DeleteMapping("/delete/{no}")
 	public int delete(@PathVariable String no) {
 		
-		int result = Math.min(boardService.delete(no), starService.deleteStar(no));
-		
-		if(result == 1) {
-			//System.out.println(수정 성공);
+		if(true) {
+			//System.out.println(등록 성공);
 			return 200;
 		}else {
 			return 400;
 		}
 	}
 	
-	@GetMapping("/search/{apt}")
-	public List<StarBoard> select(@PathVariable String apt) {
-		
-		return boardService.select(apt);
-	}
 	
 	@GetMapping("/detail/{no}")
 	public StarBoard selectNo(@PathVariable String no) {
@@ -97,10 +77,5 @@ public class BoardRestController {
 		List<Board> list = boardService.selectAll();
 		return list;
 	}
-	@GetMapping("/star")
-	public List<Star> starAll() {
-		System.out.println("in check");
-		List<Star> list = starService.selectAll();
-		return list;
-	}
+
 }
