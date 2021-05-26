@@ -30,8 +30,8 @@ public class HouseDealServiceImpl implements HouseDealService {
 	}
 
 	@Override
-	public List<HouseDeal> getHouseDeal(String dong) {
-		return repo.getHouseDeal(dong);
+	public List<HouseDeal> getHouseDeal(String aptname) {
+		return repo.getHouseDeal(aptname);
 	}
 
 }

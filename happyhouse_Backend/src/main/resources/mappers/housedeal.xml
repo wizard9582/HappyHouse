@@ -5,8 +5,8 @@
 <!-- name space: 쿼리를 구별하기 위한 키워드 -->
 <mapper namespace="com.happyhouse.backend.model.repo.HouseDealRepo">
 	<select id="getHouseDeal" parameterType="String" resultType="HouseDeal">
-		select * 
+		select AptName as name, dealAmount as price, area, dealYear, dealMonth 
 		from housedeal 
-		where dong = #{dong}
+		where AptName = #{aptname}
 	</select>
 </mapper>
