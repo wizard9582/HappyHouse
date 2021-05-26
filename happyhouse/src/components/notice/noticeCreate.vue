@@ -66,16 +66,16 @@ export default {
 					.then((res) => {
 						console.log(res);
 						if (res.status === 200) {
-							alert("도서 등록 성공");
+							alert("공지사항 등록 성공");
 							this.$router.push({
 								path: "/notice/list/",
 							});
 						} else {
-							alert("도서 등록 실패");
+							alert("공지사항 등록 실패");
 						}
 					})
 					.catch(() => {
-						alert("도서 등록 실패");
+						alert("공지사항 등록 실패");
 					});
 			}
 		},
@@ -96,9 +96,6 @@ export default {
 			});
 			//console.log(noClicked);
 		},
-		changeManage(){
-
-		}
 	},
 };
 </script>

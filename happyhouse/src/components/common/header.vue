@@ -39,8 +39,10 @@
 						<router-link to="/board/list" class="nav-link text-white">게시판</router-link></li>
 					<li class="nav-item">
 						<router-link to="/map/역삼동" class="nav-link text-white">지도</router-link></li>
-					<li class="nav-item">
+					<li class="nav-item" v-if="token">
 						<router-link to="/favorite" class="nav-link text-white">즐겨찾기</router-link></li>
+					<li class="nav-item" v-if="token">
+						<router-link to="/mypage" class="nav-link text-white">내정보</router-link></li>
 					<li class="nav-item mr-5">
 						<button v-if="!token" class="btn btn-primary" type="button" @click="$emit('tryLogin')">로그인</button>
 						<button v-else class="btn btn-primary" type="button" @click="$emit('tryLogout')">로그아웃</button></li>

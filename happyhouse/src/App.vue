@@ -112,6 +112,7 @@ export default {
 						this.token = res.data.token;
 						//console.log(this.token);
 						localStorage.setItem('token', this.token);
+						localStorage.setItem('id', user.id);
 						alert("로그인 성공");
 						this.closeLogin();
 					} else {

@@ -13,8 +13,7 @@ import mapDetail from "../components/map/mapDetail.vue";
 import mapCompare from "../components/map/mapCompare.vue";
 
 import mypage from "../components/mypage/mypage.vue";
-import mypageCreate from "../components/mypage/mypageCreate.vue";
-import mypageModify from "../components/mypage/mypageModify.vue";
+import favorite from "../components/mypage/favorite.vue";
 
 import noticeCreate from "../components/notice/noticeCreate.vue";
 import noticeDetail from "../components/notice/noticeDetail.vue";
@@ -57,16 +56,8 @@ const routes = [
 		component: mapCompare,
 	},
 	{
-		path: "/mypage/mypage",
+		path: "/mypage",
 		component: mypage,
-	},
-	{
-		path: "/mypage/create",
-		component: mypageCreate,
-	},
-	{
-		path: "/mypage/modify",
-		component: mypageModify,
 	},
 	{
 		path: "/notice/create/:no",
@@ -83,6 +74,10 @@ const routes = [
 	{
 		path: "/notice/list",
 		component: noticeList,
+	},
+	{
+		path: "/favorite/:id",
+		component: favorite,
 	},
 ];
 
