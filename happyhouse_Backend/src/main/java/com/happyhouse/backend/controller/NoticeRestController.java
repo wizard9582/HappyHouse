@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.happyhouse.backend.dto.Board;
-import com.happyhouse.backend.dto.Star;
-import com.happyhouse.backend.dto.StarBoard;
-import com.happyhouse.backend.model.service.BoardService;
-import com.happyhouse.backend.model.service.StarService;
+import com.happyhouse.backend.dto.Notice;
+import com.happyhouse.backend.model.service.NoticeService;
+
 
 @RequestMapping("/notice")
 @CrossOrigin("*")
@@ -25,14 +23,12 @@ import com.happyhouse.backend.model.service.StarService;
 public class NoticeRestController {
 
 	@Autowired
-	BoardService boardService;
-	@Autowired
-	StarService starService;
+	NoticeService noticeService;
 	
 	@PostMapping("/insert")
-	public int insert(@RequestBody Board board) {
+	public int insert(@RequestBody Notice notice) {
 		
-		System.out.println(board);
+		System.out.println(notice);
 		
 		if(true) {
 			//System.out.println(등록 성공);
@@ -43,7 +39,7 @@ public class NoticeRestController {
 	}
 	
 	@PutMapping("/update")
-	public int update(@RequestBody Board board) {
+	public int update(@RequestBody Notice notice) {
 		
 		if(true) {
 			//System.out.println(등록 성공);
@@ -64,17 +60,10 @@ public class NoticeRestController {
 		}
 	}
 	
-	
-	@GetMapping("/detail/{no}")
-	public StarBoard selectNo(@PathVariable String no) {
-		System.out.println("----->" + no);
-		return boardService.selectNo(no);
-	}
-	
 	@GetMapping("/search")
-	public List<Board> selectAll() {
+	public List<Notice> selectAll() {
 		System.out.println("in check");
-		List<Board> list = boardService.selectAll();
+		List<Notice> list = noticeService.selectAll();
 		return list;
 	}
 
