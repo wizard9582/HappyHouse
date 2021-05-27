@@ -8,7 +8,7 @@
                 <h3>{{aptName}}</h3>
                 <div></div>
                 <br><br>
-                <h5>종합평가 : {{avgStar}} / 5</h5> <star-rating :rating="avgStar" :read-only="true" :increment="0.01" :show-rating="false"></star-rating>
+                <h5>종합평가 : {{avgStar|starFilter}} / 5</h5> <star-rating :rating="avgStar" :read-only="true" :increment="0.01" :show-rating="false"></star-rating>
                 <div></div>
                 <div id = "heart" @click="addFavorite"/>
                 <h5>최근리뷰</h5>
@@ -164,7 +164,11 @@ export default {
             }else{
                 return uk + "억 " + cheon + "천만원";
             }
-        }
+        },
+        starFilter(star) {
+            if (!star) return 0;
+            return star.toFixed(3);
+        },
     },
     methods: {
         getDeal(){
