@@ -2,7 +2,7 @@
 
 <template>
 	<div id="app">
-		<header-comp @tryLogin="openLogin" v-bind:token="token"></header-comp>
+		<header-comp @tryLogin="openLogin" @tryLogout="Logout" v-bind:token="token"></header-comp>
 
 		<router-view :key="$route.fullPath"/>
 
@@ -107,10 +107,12 @@ export default {
 				data: user, //
 			})
 				.then((res) => {
-					//console.log(res);
+					console.log(res);
 					if (res.data.status == true) {
 						this.token = res.data.token;
 						//console.log(this.token);
+						localStorage.setItem('token', this.token);
+						localStorage.setItem('id', user.id);
 						alert("로그인 성공");
 						this.closeLogin();
 					} else {
@@ -122,6 +124,10 @@ export default {
 				});
 
 		},
+		Logout(){
+			this.token = "";
+			localStorage.clear();
+		},
 		Regist(user){
 			//console.log(user);
 			rest.axios({
@@ -131,7 +137,7 @@ export default {
 			})
 				.then((res) => {
 					console.log(res);
-					if (res.data.status == 200) {
+					if (res.data == 200) {
 						//console.log(this.token);
 						alert("가입 성공");
 						this.openLogin();

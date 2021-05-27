@@ -8,9 +8,9 @@
                 <h3>{{aptName}}</h3>
                 <div></div>
                 <br><br>
-                <h5>종합평가 : {{avgStar}} / 5</h5> <star-rating :rating="avgStar" :read-only="true" :increment="0.01" :show-rating="false"></star-rating>
+                <h5>종합평가 : {{avgStar|starFilter}} / 5</h5> <star-rating :rating="avgStar" :read-only="true" :increment="0.01" :show-rating="false"></star-rating>
                 <div></div>
-                <br>
+                <div id = "heart" @click="addFavorite"/>
                 <h5>최근리뷰</h5>
                 <b-list-group flush v-for="(board, index) in boards" :key="index" >
                     <b-list-group-item v-if="index > boardCount - 4" class="m-1">
@@ -21,7 +21,7 @@
                 </b-list-group>
             </div>
             <div class="col-8">
-                <h6>최근 거래 내역</h6>
+                    <h6>최근 거래 내역</h6>
                     <b-list-group flush v-for="(houseDeal, index) in houseDeals" :key="index" >
                         <b-list-group-item v-if="index > dealCount - 4" class="m-1">
                             <span>
@@ -39,6 +39,32 @@
     </div>
 </template>
 <style scoped>
+#heart {
+    position:relative;
+    overflow:hidden;
+    top:10px;
+    left:10px;
+    width:100px;
+    height:90px;
+    }
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: pink;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    }
+#heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    }
 </style>
 <script>
 import rest from "@/js/httpCommon.js"
@@ -138,7 +164,11 @@ export default {
             }else{
                 return uk + "억 " + cheon + "천만원";
             }
-        }
+        },
+        starFilter(star) {
+            if (!star) return 0;
+            return star.toFixed(3);
+        },
     },
     methods: {
         getDeal(){
@@ -146,6 +176,20 @@ export default {
         },
         getPrice(){
             return this.monthlyPrice;
+        },
+        addFavorite(){
+            let id = localStorage.getItem('id');
+            let items = localStorage.getItem("itemof"+id);
+
+            if (!items) {
+                items = [];
+                items.push({type : 0, name: this.aptName});
+                localStorage.setItem("itemof"+id, JSON.stringify(items));
+            } else {
+                let add = JSON.parse(items);
+                add.push({type : 0, name: this.aptName});
+                localStorage.setItem("itemof"+id, JSON.stringify(add));
+            }
         }
     },
 }

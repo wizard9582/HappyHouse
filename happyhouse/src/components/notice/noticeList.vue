@@ -76,6 +76,11 @@ export default {
 			//console.log(noClicked);
 		},
 		goWrite() {
+			if(localStorage.getItem('id') != "admin"){
+				alert("비인가 사용자입니다!");
+				return;
+			}
+
 			this.$router.push({
 				path: "/notice/create/" + this.numbering,
 			});

@@ -67,9 +67,12 @@ public class NoticeRestController {
 	
 	@GetMapping("/search")
 	public List<Notice> selectAll() {
-		System.out.println("in check");
 		List<Notice> list = noticeService.selectAll();
 		return list;
 	}
+	@GetMapping("/detail/{no}")
+	public Notice select(@PathVariable String no) {
 
+		return noticeService.detail(no);
+	}
 }

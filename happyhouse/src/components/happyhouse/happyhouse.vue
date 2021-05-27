@@ -12,16 +12,15 @@
 							<b-card-text>사이트의 뉴스가 올라옵니다.</b-card-text>
 						</b-card-body>
 						
-						<b-list-group flush>
-							<b-list-group-item>Cras justo odio</b-list-group-item>
-							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-							<b-list-group-item>Vestibulum at eros</b-list-group-item>
-							<b-list-group-item>Cras justo odio</b-list-group-item>
-							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-							<b-list-group-item>Vestibulum at eros</b-list-group-item>
-							<b-list-group-item>Cras justo odio</b-list-group-item>
-							<b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-							<b-list-group-item>Vestibulum at eros</b-list-group-item>
+						<b-list-group flush v-for="(notice, index) in notices" :key="index" >
+							<b-list-group-item v-if="index > numbering2 - 5" class="m-1">
+								<span>
+									{{notice.title}} 
+								</span>
+								<span>
+									{{notice.date}}
+								</span>
+							</b-list-group-item>
 						</b-list-group>
 
 					</b-card-body>
@@ -29,8 +28,7 @@
 				<div class="col-lg-4 bg-light p-3">
 					<div style="max-width: 20rem;">
 						<b-card-body>
-							<b-card-title>주변지도</b-card-title>
-							<b-card-text>현재 위치를 기준으로 거래지도를 나타냅니다.</b-card-text>
+							<b-card-title>지도</b-card-title>
 						</b-card-body>
 					</div>
 					<div id="kakaomap" style="width:90%;height:70%; flow:left"></div>
@@ -43,7 +41,7 @@
 						</b-card-body>
 
 						<b-list-group flush v-for="(board, index) in boards" :key="index" >
-							<b-list-group-item v-if="index > numbering - 5" class="m-1">
+							<b-list-group-item v-if="index > numbering1 - 5" class="m-1">
 								<span>
 									{{board.title}} 
 								</span>
@@ -66,7 +64,8 @@ import rest from "@/js/httpCommon.js";
 export default {
 	data(){
 		return{
-			numbering : "",
+			numbering1 : "",
+			numbering2 : "",
 			notices : {},
 			boards : {},
 		}
@@ -80,8 +79,21 @@ export default {
 				//console.log(res);
 				this.boards = res.data;
 				//console.log("length: " + this.boards.length);
-				let lastNum = this.boards[this.boards.length - 1].no;
-				this.numbering = parseInt(lastNum) + 1;
+				this.numbering1 = this.boards.length;
+			})
+			.catch((err) => {
+				alert("목록 조회 실패");
+				console.log(err);
+			});
+		rest.axios({
+				method: "get",
+				url: "/notice/search/",
+			})
+			.then((res) => {
+				//console.log(res);
+				this.notices = res.data;
+				//console.log("length: " + this.boards.length);
+				this.numbering2 = this.notices.length;
 			})
 			.catch((err) => {
 				alert("목록 조회 실패");

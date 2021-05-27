@@ -78,7 +78,7 @@ export default {
 			})
 			.then((res) => {
 				//console.log(res.data);
-				this.board = res.data.board;
+				this.board = res.data;
 			})
 			.catch((err) => {
 				alert("목록 조회 실패");
@@ -93,14 +93,24 @@ export default {
 			//console.log(noClicked);
 		},
 		goEdit() {
+
+			if(localStorage.getItem('id') != "admin"){
+				alert("비인가 사용자입니다!");
+				return;
+			}
+
 			this.$router.push({
 				path: "/notice/modify/" + this.no,
 			});
 			//console.log(noClicked);
 		},
 		goDelete() {
-			rest
-				.axios({
+
+			if(localStorage.getItem('id') != "admin"){
+				alert("비인가 사용자입니다!");
+				return;
+			}
+			rest.axios({
 					method: "delete",
 					url: "/notice/delete/" + this.no,
 				})
