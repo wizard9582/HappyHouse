@@ -58,7 +58,7 @@ export default {
 		rest.axios({
 				method: "get",
 				url: "/user/info/" + this.id,
-                Headers : {"jwt-auth-token" : localStorage.getItem("token")},
+                headers : {"jwt-auth-token" : localStorage.getItem("token")},
 			})
 			.then((res) => {
 				//console.log(res.data);
@@ -74,7 +74,7 @@ export default {
             rest.axios({
 				method: "put",
 				url: "/user/edit/",
-                Headers : {"jwt-auth-token" : localStorage.getItem("token")},
+                headers : {"jwt-auth-token" : localStorage.getItem("token")},
                 data : this.user
 			})
 			.then((res) => {
@@ -89,7 +89,7 @@ export default {
             rest.axios({
 				method: "delete",
 				url: "/user/delete/",
-                Headers : {"jwt-auth-token" : localStorage.getItem("token")},
+                headers : {"jwt-auth-token" : localStorage.getItem("token")},
                 data : this.user
 			})
 			.then((res) => {

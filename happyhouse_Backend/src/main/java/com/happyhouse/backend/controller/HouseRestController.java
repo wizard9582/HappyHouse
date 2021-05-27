@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.happyhouse.backend.dto.House;
 import com.happyhouse.backend.dto.HouseDeal;
 import com.happyhouse.backend.model.service.AddressService;
-import com.happyhouse.backend.model.service.AttLocService;
 import com.happyhouse.backend.model.service.HouseDealService;
 import com.happyhouse.backend.model.service.HouseService;
 import com.happyhouse.backend.model.service.UserService;
@@ -24,8 +23,6 @@ import com.happyhouse.backend.model.service.UserService;
 public class HouseRestController {
 	@Autowired
 	AddressService addressservice;
-	@Autowired
-	AttLocService attlocservice;
 	@Autowired
 	HouseDealService dealservice;
 	@Autowired

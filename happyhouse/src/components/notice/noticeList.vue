@@ -3,7 +3,8 @@
 <template>
 	<div>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive project-list">
@@ -35,6 +36,7 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-lg-3"></div>
 			</div>
 		</div>
 	</div>
